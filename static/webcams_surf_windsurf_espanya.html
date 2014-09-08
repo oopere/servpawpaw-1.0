@@ -1,0 +1,711 @@
+<!DOCTYPE HTML>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<link rel='stylesheet' type='text/css'  href='webcame.css'/>
+<meta name ='viewport' content="width=device-width, initial-scale=1.0" />
+<title>WebCams &raquo; Surf, Windsurf, SUP</title>
+</head>
+<body>
+<script type="text/javascript"> 
+
+window.onload = loadPage;
+var MAX_FAV = 20;
+var elementos = 0;
+var favoritas = [MAX_FAV];
+var favname=[MAX_FAV];
+var headerCam;
+var zonaCamaras;
+var h2Baleares;
+var h2Andalucia;
+var h2Catalunya;
+var h2Canarias;
+var h2Galicia;
+var h2Valencia;
+var h2Euskadi;
+var h2Asturias;
+var h2Cantabria;
+var h2Murcia;
+
+function loadPage()
+{
+	headerCam= document.getElementById('HeaderCam');
+	zonaCamaras = document.getElementById('zonaCamaras');
+	h2Galicia = document.getElementById('Galicia');
+	h2Galicia.addEventListener("click", cargaGalicia);
+	h2Baleares = document.getElementById('Baleares');
+	h2Baleares.addEventListener("click", cargaBaleares);
+	h2Andalucia = document.getElementById('Andalucia');
+	h2Andalucia.addEventListener("click", cargaAndalucia);
+	h2Catalunya = document.getElementById('Catalunya');
+	h2Catalunya.addEventListener("click", cargaCatalunya);
+	h2Canarias = document.getElementById('Canarias');
+	h2Canarias.addEventListener("click", cargaCanarias);
+	h2Valencia = document.getElementById('Valencia');
+	h2Valencia.addEventListener("click", cargaValencia);
+	h2Euskadi = document.getElementById('Euskadi');
+	h2Euskadi.addEventListener("click", cargaEuskadi);
+	h2Asturias = document.getElementById('Asturias');
+	h2Asturias.addEventListener("click", cargaAsturias);
+	h2Cantabria = document.getElementById('Cantabria');
+	h2Cantabria.addEventListener("click", cargaCantabria);
+	h2Murcia = document.getElementById('Murcia');
+	h2Murcia.addEventListener("click", cargaMurcia);
+	
+	loadwebcamdata();
+}
+function calcHeight()
+{
+//find the height of the internal page
+         var the_height=document.getElementById('the_iframe').contentWindow.
+         document.body.scrollHeight;
+//change the height of the iframe
+         document.getElementById('the_iframe').height=the_height;
+}
+function loadwebcamdata()
+{
+  elementos = MAX_FAV;
+  var numCam = 0;
+  var nomCam = "";
+  do{
+    nomCam = 'favorita' + numCam.toString();
+    favoritas[numCam] = localStorage.getItem(nomCam)
+    numCam ++;
+  }while (numCam < MAX_FAV)
+
+  for (n=0;n<MAX_FAV;n++)
+  {
+    if (favoritas[n] == null) 
+      {
+        favoritas[n] = "";
+        elementos = elementos -1;
+      }
+  }
+
+  cargarFavoritas();
+}
+function checkChecks()
+{
+  var divFavoritas=document.getElementById('favoritas');
+	var checkboxes=document.getElementsByTagName('input'); 
+	var lCamaras = divFavoritas.getElementsByClassName('camaraContenedor');
+  var countCam = 0;
+  var check = false;
+    for(i=0;i<checkboxes.length;i++)
+    {
+        if(checkboxes[i].type == "checkbox")
+        {      
+            check = false;
+            countCam = 0;
+            do{
+              if (checkboxes[i].name === lCamaras[countCam].id){
+                check = true;
+                break;  
+              } 
+              countCam++;
+            }while (countCam < lCamaras.length);      
+            checkboxes[i].checked = check;
+        }
+    }
+}
+function cargarFavoritas()
+{
+	var divFavoritas=document.getElementById('favoritas')
+	var htmlFavoritas="";
+
+  for (var countCam = 0; countCam < MAX_FAV; countCam++){
+    htmlFavoritas += favoritas[countCam];
+  }
+	if (htmlFavoritas == "")
+	{
+		htmlFavoritas = "<h1 id='tittle'>ZONA FAVORITAS. </h1><br><h2> Escoge las Webcams de tus spots para surf, windsurf, SUP, Kite favoritos y se mostraran en este apartado cada vez que visites la pagina. <br> Nos vemos en el Agua!</h2>";
+	}
+	divFavoritas.innerHTML = htmlFavoritas;
+	checkChecks();
+}
+</script>
+	
+<div id="favoritas" class ="favoritas">
+</div>
+<div id="countries">
+	<a class="btnCountries, ctrSelected" >Spain</a>
+	<a href="./webcams_surf_windsurf_portugal.html#countries" class="btnCountries" >Portugal</a>
+</div>
+<div class='contenedor'>
+	<a href="#HeaderCam"><h2 id='Andalucia' class='tittlebtn'>Andalucia</h2></a>
+	<a href="#HeaderCam"><h2 id="Asturias" class='tittlebtn'>Asturias</h2></a>
+	<a href="#HeaderCam"><h2 id="Baleares" class='tittlebtn'>Baleares</h2></a>
+	<a href="#HeaderCam"><h2 id='Canarias' class='tittlebtn'>Canarias</h2></a>
+	<a href="#HeaderCam"><h2 id='Cantabria' class='tittlebtn'>Cantabria</h2></a>
+	<a href="#HeaderCam"><h2 id='Catalunya' class='tittlebtn'>Cataluña</h2></a>
+	<a href="#HeaderCam"><h2 id='Euskadi' class='tittlebtn'>Euskadi</h2></a>
+	<a href="#HeaderCam"><h2 id='Galicia' class='tittlebtn'>Galicia</h2></a>
+	<a href="#HeaderCam"><h2 id="Murcia" class='tittlebtn'>Murcia</h2></a>
+	<a href="#HeaderCam"><h2 id="Valencia" class='tittlebtn'>Valencia</h2></a>
+</div>
+<div id="titCamaras"><h2 id="HeaderCam" class="tittle"></h2></div>
+<div id="zonaCamaras">
+</div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- OceanBlog300x250 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-7656070818995137"
+     data-ad-slot="6011579401"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
+
+<script type="text/javascript" async> 
+var camaras = {};
+var tripLink = {};
+
+function returnCamera(name, buttons)
+{
+	if (name)
+	{
+		var camera2Write='<div class="camaraContenedor" id="'+name+'"> ';
+		camera2Write += camaras[name];
+		if (buttons)
+		{
+			camera2Write = camera2Write + returnButtons(name);
+		}
+		camera2Write += '</div>' ;
+		return camera2Write;
+	}
+	return "";
+}
+
+function cargaEuskadi()
+{
+camaras = {  
+'laArena':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/la-arena-muskiz/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'bakio':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/bakio/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>", 
+'mundaka':'Mundaka <br> by  <a href="http://www.kostasystem.com/monitorizaciones/mundaka/" target = "_blank">Kosta System</a></br><img width="300px" height="261px" src= "http://150.241.234.31/kostasystem/irudiak/mundaka/camara1_snap.jpeg" id="mundaka"></img>',
+'sopelana':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/sopelana/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'zarautz':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/zarautz/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'zarautzPlaya':'Zarautz <br> by  <a href="http://www.kostasystem.com/monitorizaciones/zarautz/" target = "_blank">Kosta System</a></br><img width="300px" height="261px" src= "http://150.241.234.31/kostasystem/irudiak/zarautz/camara1_snap.jpeg" id="zarautzPlaya"></img>',
+'zurriola':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/zurriola-gros/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>"
+}
+tripLink = {
+'laArena':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g2336256-Zierbena_Vizcaya_Province_Basque_Country-Vacations.html',
+'bakio':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1069106-Bakio_Vizcaya_Province_Basque_Country-Vacations.html',
+'mundaka':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g494959-Mundaka_Vizcaya_Province_Basque_Country-Vacations.html',
+'sopelana':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1069105-Sopelana_Vizcaya_Province_Basque_Country-Vacations.html',
+'zarautz':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g897148-Zarautz_Guipuzcoa_Province_Basque_Country-Vacations.html',
+'zarautzPlaya':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g897148-Zarautz_Guipuzcoa_Province_Basque_Country-Vacations.html',
+'zurriola':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187457-d3222690-Reviews-Zurriola_Beach-San_Sebastian_Donostia_Guipuzcoa_Province_Basque_Country.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('laArena', true);
+  txtHTML += returnCamera('bakio', true);
+  txtHTML += returnCamera('mundaka', true);
+  txtHTML += returnCamera('sopelana', true);
+  txtHTML += returnCamera('zarautz', true);
+  txtHTML += returnCamera('zarautzPlaya', true);
+  txtHTML += returnCamera('zurriola', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Euskadi";
+  checkChecks();
+}
+
+function cargaBaleares()
+{
+camaras = {  
+'canPastilla':'Can Pastilla <br> by  <a href="http://www.helios-hotels.com/mallorca/fr/webcam-can-pastilla-beach.htm" target = "_blank">Helios Hotels</a></br><img width="300px" height="261px" src= "http://www.helios-hotels.com/playa_hel.jpg" id="canPastilla"></img>',
+'alcudia':'alcudia <br> by  <a href="http://www.playaesperanza.net/alcudia/axis.jpg" target = "_blank">Playa Esperanza</a></br><img width="300px" height="261px" src= "http://www.playaesperanza.net/alcudia/axis.jpg" id="alcudia"></img>',
+'formentera':'formentera <br> by  <a href="http://www.bluebarformentera.com/inicio.html" target = "_blank">Blue Bar</a></br><img width="300px" height="261px" src= "http://www.bluebarformentera.com/webcam/sunset.jpg" id="formentera"></img>',
+'calaTarida':'Cala Tarida <br> by  <a href="http://www.eufabies.com/" target = "_blank">Ses Eufabies</a></br><img width="300px" height="261px" src= "http://213.96.90.110:8080/axis-cgi/jpg/image.cgi?resolution=640x480" id="calaTarida"></img>',
+'santaPonsa':'Santa Ponsa <br> by  <a href="http://santa-ponsa.cwsurf.de/" target = "_blank">santa-ponsa</a></br><img width="300px" height="261px" src= "http://santa-ponsa.cwsurf.de/cam.jpg" id="santaPonsa"></img>'
+}
+tripLink = {
+'canPastilla':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580295-Can_Pastilla_Majorca_Balearic_Islands-Vacations.html',
+'alcudia':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1233772-Alcudia_Majorca_Balearic_Islands-Vacations.html',
+'formentera':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g187461-Formentera_Balearic_Islands-Vacations.html',
+'calaTarida':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1068677-Cala_Tarida_Ibiza_Balearic_Islands-Vacations.html',
+'santaPonsa':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g562815-Santa_Ponsa_Calvia_Majorca_Balearic_Islands-Vacations.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('alcudia', true);
+  txtHTML += returnCamera('canPastilla', true);
+  txtHTML += returnCamera('santaPonsa', true);
+  txtHTML += returnCamera('calaTarida', true);
+  txtHTML += returnCamera('formentera', true);  
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Baleares";
+  checkChecks();
+}
+
+function cargaAndalucia()
+{
+camaras = {
+'mojacar':'Mojacar <br> by <a href="http://www.continental-mojacar.es/es/index.php?mod=webcam" target="_blank">Continental-Mojacar</a></br><img width="300" height="261px" src="http://www.continental-mojacar.es/img/webcam/imagen.jpg?180" id="mojacar"></img>',
+'roquetas':'Roquetas <br> by <a href="http://www.roquetas-de-mar.es/uk/webcam.asp" target="_blank">Roquetas de Mar</a></br><img width="300" height="261px" src="http://www.roquetas-de-mar.es/upload/video.jpg" id="roquetas"></img>',
+'losLances':'Los Lances Tarifa<br> by <a href="http://www.beyyy.com/webcam-los-lances-tarifa/#" target="_blank">www.beyyy.com</a></br><img width="300" height="261px" src="http://www.beyyy.com/webcam/webcam.jpg" id="losLances"></img>',
+'valdevaqueros':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/valdevaqueros-tangana/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>", 
+'arteVida':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/arte-vida/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>",
+'canosMeca':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/los-canos-de-meca/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>",
+'puntaUmbria':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/punta-umbria/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'almerimar':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/club-de-playa-almerimar/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'rochePoint':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/roche-point/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'balneario':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/balneario/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'valdevaquerosMistral':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/valdevaqueros-club-mistral/b/A45064668F961AB4AB17' frameborder='50'scrolling='no' width='300px' height='300px'></iframe>"
+}
+tripLink = {'mojacar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580270-Mojacar_Province_of_Almeria_Andalucia-Vacations.html',
+'roquetas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644309-Roquetas_de_Mar_Province_of_Almeria_Andalucia-Vacations.html',
+'losLances':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g315918-d1065750-Reviews-Los_Lances_Beach-Tarifa_Costa_de_la_Luz_Andalucia.html',
+'valdevaqueros':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'arteVida':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'canosMeca':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580273-Los_Canos_de_Meca_Costa_de_la_Luz_Andalucia-Vacations.html',
+'puntaUmbria':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g947008-Punta_Umbria_Province_of_Huelva_Andalucia-Vacations.html',
+'almerimar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g658698-Almerimar_Province_of_Almeria_Andalucia-Vacations.html',
+'rochePoint':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g652101-Conil_de_la_Frontera_Costa_de_la_Luz_Andalucia-Vacations.html',
+'balneario':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'valdevaquerosMistral':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html'
+}
+  var txtHTML = '';  
+  txtHTML += returnCamera('mojacar', true);
+  txtHTML += returnCamera('roquetas', true);
+  txtHTML += returnCamera('losLances', true);
+  txtHTML += returnCamera('valdevaqueros', true);
+  txtHTML += returnCamera('arteVida', true);
+  txtHTML += returnCamera('canosMeca', true);
+  txtHTML += returnCamera('puntaUmbria', true);
+  txtHTML += returnCamera('almerimar', true);
+  txtHTML += returnCamera('rochePoint', true);
+  txtHTML += returnCamera('balneario', true);
+  txtHTML += returnCamera('valdevaquerosMistral', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Andalucia";
+  checkChecks();
+}
+function cargaAsturias()
+{
+camaras = {
+'llanes':'Playa del Barro, Llanes <br> by <a href="http://webcamsdeasturias.com/webcam.php?id=58" target="_blank">Webcams de Asturias</a></br><img width="300" height="261px" src="http://www.wewebcams.com/get_imagen_ws.php?id=64" id="llanes"></img>',
+'ribadesella':'Santa Marina, Ribadesella <br> by <a href="http://www.hoteldonpepe.com/content/webcam" target="_blank">Hotel don Pepe</a></br><img width="300" height="261px" src="http://www.wewebcams.com/get_imagen_ws.php?id=11" id="ribadesella"></img>',
+'sanLorenzo':'San Lorenzo <br> by <a href="http://www.escuelaasturianadesurf.com/webcams/" target="_blank">Escuela asturiana de Surf</a></br><img width="300" height="261px" src="http://www.wewebcams.com/get_imagen_ws.php?id=110" id="sanLorenzo"></img>',
+'sanAntolin':'San Antolin <br> by <a href="http://www.escuelaasturianadesurf.com/webcams/" target="_blank">Escuela asturiana de Surf</a></br><img width="300" height="261px" src="http://www.wewebcams.com/get_imagen_ws.php?id=166" id="sanAntolin"></img>',
+'cuevasMar':'Cuevas de Mar <br> by <a href="http://www.escuelaasturianadesurf.com/webcams/" target="_blank">Escuela asturiana de Surf</a></br><img width="300" height="261px" src="http://www.wewebcams.com/get_imagen_ws.php?id=174" id="cuevasMar"></img>',
+'salinas':'Salinas <br> by <a href="http://www.asturcolchon.com/" target="_blank">Asturcolchon</a></br><img width="300" height="261px" src="http://www.asturcolchon.com/salinas.jpg" id="roquetas"></img>'
+}
+tripLink = {'llanes':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g608994-Llanes_Asturias-Vacations.html',
+'ribadesella':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g660742-Ribadesella_Asturias-Vacations.html',
+'sanLorenzo':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1078911-San_Lorenzo_Gijon_Asturias-Vacations.html',
+'sanAntolin':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g187449-Asturias-Vacations.html',
+'cuevasMar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Restaurant_Review-g1592059-d4354501-Reviews-Chiringuito_Playa_Cuevas_del_Mar-Nueva_de_Llanes_Llanes_Asturias.html',
+'salinas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1064254-Salinas_Castrillon_Municipality_Asturias-Vacations.html'
+}
+  var txtHTML = '';  
+  txtHTML += returnCamera('llanes', true);
+  txtHTML += returnCamera('salinas', true);
+  txtHTML += returnCamera('ribadesella', true);
+  txtHTML += returnCamera('sanLorenzo', true);
+  txtHTML += returnCamera('sanAntolin', true);
+  txtHTML += returnCamera('cuevasMar', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Asturias";
+  checkChecks();
+}
+
+function cargaCatalunya()
+{
+camaras = {'marBella':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/platja-de-la-mar-bella/b/A45064668F961AB4AB17' height='300' width='300' frameborder='50' scrolling='no'></iframe>",
+'bogatell':'Bogatell <br> by <a href="http://www.portolimpic.es/webcam.php?i=2" target="_blank">www.portolimpic.es</a></br><img width="300" height="261px" src="http://www.buscandomar.com/personal/webcams/cam1/image/snapshot.jpg" id="bogatell"></img>',
+'castelldefelsKite':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/castelldefels-zona-kitesurf/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'pals':'Platja de Pals <br> by <a href="http://www.webcampals.net" target="_blank">www.webcampals.net</a></br><img width="300" height="261px" src="http://www.webcampals.net/images/channel_1.jpg?r=1390510838116" id="pals"></img>',
+'santPere':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/sant-pere-pescador/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'barceloneta':'Barcelona-Barceloneta <br> by <a href="http://www.buscandomar.com/" target="_blank">www.buscandomar.com</a></br><img width="300" height="261px" src="http://www.buscandomar.com/personal/webcams/cam3/image/snapshot.jpg?1389970864550" id="barceloneta">',
+'tamariu':'Tamariu <br> by <a href="http://www.hotelhostalillo.com/webcam/default.htm" target="_blank">Hotel Hostalillo</a></br><img width="300px" height="261px" src= "http://www.hotelhostalillo.com/webcam/hostalillo-tamariu.jpg" id="tamariu"></img>',
+'roses':'Roses <br> by <a href="http://www.roses.net" target="_blank">www.roses.net</a></br><img width="300px" height="261px" src= "http://www.roses.net/webcam/images/654321.jpg" id="roses"></img>',
+'tyson':'Tyson Barcelona <br> by <a href="http://www.lasantasurfsitges.es/webcam-barcelona/" target = "_blank">la santa surf</a></br><img width="300px" height="261px" src= "http://lasantasurfsitges.es/webcam/cam-bcn000M.jpg" id="tyson"></img>',
+'sitges':'Sitges <br> by <a href="http://www.lasantasurfsitges.es/webcam-barcelona/" target = "_blank">la santa surf</a></br><img width="300px" height="261px" src= "http://www.lasantasurfsitges.es/webcam/web-000M.jpg" id="sitges"></img>',
+'ampuria':'Ampuria Brava <br> by  <a href="http://www.roses.net/webcam/wc1.asp" target = "_blank">roses.net</a></br><img width="300px" height="261px" src= "http://www.ampuriabrava.com/webcam/123456.jpg" id="ampuria"></img>',
+'cabrera':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/cabrera-de-mar/b/A45064668F961AB4AB17' height='300' width='300' frameborder='50' scrolling='no'></iframe>",
+'aquarius':'Sant Pere <br> by  <a href="http://www.aquarius.es/de/webcam-meteo-aquarius/" target = "_blank">camping aquarius</a></br><img width="300px" height="261px" src= "http://aquarius.crossmedia-management.com/html/meteo/fullsize.jpg" id="aquarius"></img>'}
+
+tripLink = {'cabrera':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1063983-Cabrera_de_Mar_Catalonia-Vacations.html',
+'marBella':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187497-d3467712-Reviews-Nova_Mar_Bella_beach-Barcelona_Catalonia.html',
+'bogatell':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187497-d4469233-Reviews-Port_Olimpic-Barcelona_Catalonia.html',
+'castelldefelsKite':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g652129-Castelldefels_Catalonia-Vacations.html',
+'pals': 'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580332-Pals_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html',
+'santPere':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1071417-Sant_Pere_Pescador_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html',
+'barceloneta':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187497-d265458-Reviews-Little_Barcelona-Barcelona_Catalonia.html',
+'tamariu':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g652128-Tamariu_Palafrugell_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html',
+'roses':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g262060-Roses_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html',
+'tyson':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187497-d265458-Reviews-Little_Barcelona-Barcelona_Catalonia.html',
+'sitges':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g187502-Sitges_Catalonia-Vacations.html', 
+'ampuria':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g673856-Empuriabrava_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html',
+'aquarius':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Hotel_Review-g1071417-d4051197-Reviews-Camping_Aquarius-Sant_Pere_Pescador_Costa_Brava_Province_of_Girona_Catalonia.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('barceloneta', true);
+  txtHTML += returnCamera('bogatell', true);
+  txtHTML += returnCamera('sitges', true);   
+  txtHTML += returnCamera('tamariu', true);
+  txtHTML += returnCamera('tyson', true);
+  txtHTML += returnCamera('roses', true); 
+  txtHTML += returnCamera('ampuria', true);
+  txtHTML += returnCamera('aquarius', true);  
+  txtHTML += returnCamera('pals', true);
+  txtHTML += returnCamera('castelldefelsKite', true);
+  txtHTML += returnCamera('cabrera', true);
+  txtHTML += returnCamera('santPere', true);  
+  txtHTML += returnCamera('marBella', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Cataluña";
+  checkChecks();
+}
+function cargaCanarias()
+{
+  camaras = {'famara':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/famara-lanzarote/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'corralejo':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/corralejo/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'maspalomas': 'Mas Palomas <br> by  <a href="http://www.playademaspalomas.com/es/webcamplaya.php" target = "_blank">MasPalomas.com</a></span></br><img height="261px" width="300px" src= "http://www.playademaspalomas.com/meteo/playa.jpg?1400178628" id="maspalomas"></img>',
+'teguise':'Costa Teguise <br> by  <a href="http://www.beachbar-lanzarote.com/de/webcam.php" target = "_blank">Beach Bar Lanzarote</a></span></br><img height="261px" width="300px" src= "http://www.beachbar-lanzarote.com/cam1.jpg?1400178723477" id="teguise"></img>',
+'pozo':'Pozo Izquierdo <br> by <a href="http://www.pozowinds.com/webcam-pozo-izquierdo/" target="_blank">www.pozowinds.com</a></br><iframe src="http://camaras.konducta.com:8081/cam_1.jpg?uniq=0.3106784517776655" frameborder="0" scrolling="no" width="300px" height="261px" id="pozo"></iframe>',
+'medano':'Medano <br> by  <a href="http://www.cabezo-medano.com/Foto_Webcam.html" target = "_blank">Apartamentos Medano</a></br><img height="261px" width="300px" height="261px" src= "http://www.cabezo-medano.com/files/rudimobotix.jpg" id="medano"></img>'
+}
+  tripLink = {'famara':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187477-d568374-Reviews-Famara_Beach-Lanzarote_Canary_Islands.html',
+'corralejo':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580322-Corralejo_La_Oliva_Fuerteventura_Canary_Islands-Vacations.html',
+'maspalomas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g230095-Maspalomas_Gran_Canaria_Canary_Islands-Vacations.html',
+'teguise':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g659633-Costa_Teguise_Lanzarote_Canary_Islands-Vacations.html',
+'pozo':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g6592087-Pozo_Izquierdo_Gran_Canaria_Canary_Islands-Vacations.html',
+'medano':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1190083-El_Medano_Tenerife_Canary_Islands-Vacations.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('teguise', true);
+  txtHTML += returnCamera('medano', true);
+  txtHTML += returnCamera('pozo', true);
+  txtHTML += returnCamera('famara', true);
+  txtHTML += returnCamera('corralejo', true);
+  txtHTML += returnCamera('maspalomas', true); 
+
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Canarias";
+  checkChecks();  
+}
+function cargaCantabria()
+{
+  camaras = {
+'sardinero': 'Sardinero <br> by <a href="http://portal.ayto-santander.es/portal/page/portal/inet_santander/turismo/playas" target = "_blank">ayto-santander.es</a></span></br><img height="261px" width="300px" src= "http://portal.ayto-santander.es/cgi-bin/playas.pl?number=1" id="sardinero"></img>',
+'sardineroII': 'Sardinero II<br> by <a href="http://portal.ayto-santander.es/portal/page/portal/inet_santander/turismo/playas" target = "_blank">ayto-santander.es</a></span></br><img height="261px" width="300px" src= "http://portal.ayto-santander.es/cgi-bin/playas.pl?number=2" id="sardineroII"></img>',
+'suances': 'Suances<br> by <a href="http://www.locoscam.com/" target = "_blank">locoscam</a></span></br><img height="261px" width="300px" src= "http://images.webcams.travel/webcam/1354529093-Tiempo-Los-Locos-Suances.jpg" id="suances"></img>',
+'suancesII': 'Suances II<br> by <a href="http://webcamsdecantabria.com/webcam.php?id=4&seleccionaCam.x=43&seleccionaCam.y=9" target = "_blank">webcamsdecantabria.com</a></span></br><img height="261px" width="300px" src= "http://www.wewebcams.com/get_imagen_ws.php?id=200" id="suancesII"></img>',
+'cobreces': 'Cobreces<br> by <a href="http://webcamsdecantabria.com/webcam.php?id=3&seleccionaCam.x=34&seleccionaCam.y=15" target = "_blank">webcamsdecantabria.com</a></span></br><img height="261px" width="300px" src= "http://www.wewebcams.com/get_imagen_ws.php?id=89" id="cobreces"></img>',
+'sotoMarina': 'Soto Marina<br> by <a href="http://webcamsdecantabria.com/webcam.php?id=6&seleccionaCam.x=38&seleccionaCam.y=8" target = "_blank">webcamsdecantabria.com</a></span></br><img height="261px" width="300px" src= "http://www.wewebcams.com/get_imagen_ws.php?id=194" id="sotoMarina"></img>'
+
+}
+  tripLink = {'sardinero':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187484-d243202-Reviews-Playa_Primera_de_El_Sardinero-Santander_Cantabria.html',
+  'sardineroII':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187484-d243202-Reviews-Playa_Primera_de_El_Sardinero-Santander_Cantabria.html',
+  'suances':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644322-Suances_Cantabria-Vacations.html',
+  'suancesII':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644322-Suances_Cantabria-Vacations.html',
+  'cobreces':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g2290581-Cobreces_Cantabria-Vacations.html',
+  'sotoMarina':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g2100884-Soto_de_la_Marina_Cantabria-Vacations.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('sardinero', true);
+  txtHTML += returnCamera('sardineroII', true);
+  txtHTML += returnCamera('suances', true);
+  txtHTML += returnCamera('suancesII', true);
+  txtHTML += returnCamera('cobreces', true);
+  txtHTML += returnCamera('sotoMarina', true); 
+
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Cantabria";
+  checkChecks();  
+}
+function cargaGalicia()
+{
+camaras = {'cangas':'Cangas <br> by  <a href="http://www.morrazo.org/meteo/" target = "_blank">meteoCangas</a></br><img width="300px" height="261px" src= "http://95.62.234.19:1025/record/current.jpg" id="cangas"></img>', 
+'baiona':'Baiona <br> by  <a href="http://www.crtvg.es/crtvg/camaras-web/baiona" target = "_blank">CRTVG</a></br><img width="300px" height="261px" src= "http://85.91.64.26/baiona/readImage.asp?dummy=1401546064073" id="baiona"></img>', 
+'ares':'Ares <br> by  <a href="http://www.concellodeares.com/webcam.php" target = "_blank">Concello de Ares</a></br><img width="300px" height="261px" src= "http://concellodeares.com/~wcam/Ultima_Imaxe.jpg" id="ares"></img>', 
+'doniños':'Doniños <br> by  <a href="http://www.lumeboo.es/lumeboo.html" target = "_blank">Lume boo</a></br><img width="300px" height="261px" src= "http://154.56.152.17:3000/jpg/image.jpg?1401548161447" id="doniños"></img>',
+'carnota':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/carnota/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>"
+}
+tripLink={'cangas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g187509-Vigo_Pontevedra_Province_Galicia-Vacations.html',
+'baiona':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g319801-Baiona_Pontevedra_Province_Galicia-Vacations.html',
+'ares':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g6372497-Ares_A_Coruna_Province_Galicia-Vacations.html',
+'doniños':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g642225-d1122204-Reviews-Playa_de_Doninos-Ferrol_A_Coruna_Province_Galicia.html',
+'carnota':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g815521-Carnota_A_Coruna_Province_Galicia-Vacations.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('cangas', true);
+  txtHTML += returnCamera('baiona', true);
+  txtHTML += returnCamera('ares', true);
+  txtHTML += returnCamera('carnota', true);
+  txtHTML += returnCamera('doniños', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Galicia";
+  checkChecks();  
+}
+function cargaValencia()
+{
+camaras = 
+{
+'perellonet':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/perellonet/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'marenyBlau':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/mareny-blau/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>",
+'santaPonsa':'Santa Ponsa <br> by  <a href="http://santa-ponsa.cwsurf.de/" target = "_blank">santa-ponsa</a></br><img width="300px" height="261px" src= "http://santa-ponsa.cwsurf.de/cam.jpg" id="santaPonsa"></img>',
+'xilxes':'Xilxes <br> by  <a href="http://comunitatvalenciana.com/actualidad/chilchesxilxes/webcams/webcam-xilxes" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/xilxes.jpg" id="xilxes"></img>', 
+'guardamar':'Guardamar <br> by  <a href="http://comunitatvalenciana.com/actualidad/guardamar-del-segura/webcams/webcam-guardamar-del-segura" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/guardamar.jpg" id="guardamar"></img>', 
+'santaPola':'Santa Pola <br> by  <a href="http://comunitatvalenciana.com/actualidad/santa-pola/webcams/webcam-santa-pola-gran-playa-vela" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/santapolaw.jpg" id="santaPola"></img>', 
+'denia':'Denia <br> by  <a href="http://comunitatvalenciana.com/actualidad/denia/webcams/webcam-denia-deveses" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/deniaw.jpg" id="denia"></img>', 
+'piles':'Piles <br> by  <a href="http://comunitatvalenciana.com/actualidad/piles/webcams/webcam-piles" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/piles.jpg" id="piles"></img>', 
+'sanJuan':'San Juan <br> by  <a href="http://comunitatvalenciana.com/actualidad/alacantalicante/webcams/webcam-alicante-playa-de-san-juan" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/sanjuan.jpg" id="sanJuan"></img>', 
+'cullera':'Cullera <br> by  <a href="http://comunitatvalenciana.com/actualidad/cullera/webcams/webcam-cullera" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/cullera.jpg?0.41307256153682403" id="cullera"></img>', 
+'sagunto':'Sagunto <br> by  <a href="http://comunitatvalenciana.com/actualidad/saguntsagunto/webcams/webcam-sagunto" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" class="rotated"  src= "http://turiscam.gva.es/webcams/sagunt.jpg" id="sagunto"></img>',
+'benicassim':'Benicassim <br> by  <a href="http://comunitatvalenciana.com/actualidad/benicassim/webcams/webcam-benicassim" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" class="rotated"  src= "http://turiscam.gva.es/webcams/benicassim.jpg" id="benicassim"></img>',
+'peniscola':'Peñiscola <br> by  <a href="http://comunitatvalenciana.com/actualidad/peniscola/webcams/webcam-peniscola" target = "_blank">comunitat valenciana</a></br><img width="300px" height="261px" src= "http://turiscam.gva.es/webcams/penyiscola.jpg" id="peniscola"></img>'
+};
+tripLink = 
+{
+'perellonet':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187529-d2295956-Reviews-Playa_del_Perellonet-Valencia_Valencia_Province_Valencian_Country.html',
+'santaPonsa':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g562815-Santa_Ponsa_Calvia_Majorca_Balearic_Islands-Vacations.html',
+'xilxes':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1082183-Chilches_Castellon_Province_Valencian_Country-Vacations.html',
+'guardamar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g652147-Guardamar_del_Segura_Costa_Blanca_Alicante_Province_Valencian_Country-Vacations.html',
+'santaPola':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g947009-Santa_Pola_Costa_Blanca_Alicante_Province_Valencian_Country-Vacations.html',
+'denia':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g609043-Denia_Costa_Blanca_Alicante_Province_Valencian_Country-Vacations.html',
+'piles':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g3382152-Platja_de_Piles_Valencia_Province_Valencian_Country-Vacations.html',
+'sanJuan':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g187524-d255253-Reviews-Playa_de_San_Juan-Alicante_Province_Valencian_Country.html',
+'cullera':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g666526-Cullera_Valencia_Province_Valencian_Country-Vacations.html',
+'marenyBlau':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1190269-Playa_de_Gandia_Gandia_Valencia_Province_Valencian_Country-Vacations.html',
+'sagunto':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g1058794-Sagunto_Valencia_Province_Valencian_Country-Vacations.html',
+'benicassim':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g667782-Benicasim_Castellon_Province_Valencian_Country-Vacations.html',
+'peniscola':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g609036-Peniscola_Castellon_Province_Valencian_Country-Vacations.html'
+};
+  
+  var txtHTML = '';
+  txtHTML += returnCamera('cullera', true);
+  txtHTML += returnCamera('sagunto', true);
+  txtHTML += returnCamera('perellonet', true);  
+  txtHTML += returnCamera('xilxes', true);
+  txtHTML += returnCamera('marenyBlau', true);
+  txtHTML += returnCamera('guardamar', true);
+  txtHTML += returnCamera('santaPola', true);
+  txtHTML += returnCamera('denia', true);
+  txtHTML += returnCamera('piles', true);
+  txtHTML += returnCamera('sanJuan', true);
+  txtHTML += returnCamera('benicassim', true);
+  txtHTML += returnCamera('peniscola', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Valencia";
+  checkChecks();  
+}
+
+function cargaMurcia()
+{
+camaras = {'ciervo':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/isla-del-ciervo/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>", 
+'narejos':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/los-narejos/b/A45064668F961AB4AB17' frameborder='0' scrolling='no' width='300px' height='300px'></iframe>"
+}
+tripLink={'ciervo':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g187517-Cartagena-Vacations.html',
+'narejos':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g736856-Los_Alcazares-Vacations.html'
+}
+  var txtHTML = '';
+  txtHTML += returnCamera('ciervo', true);
+  txtHTML += returnCamera('narejos', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Murcia";
+  checkChecks();  
+}
+
+
+function handleClick(cb) { 
+	var favorita = "";
+	var divFavoritas=document.getElementById('favoritas')
+	var lCamaras;
+   if (cb.checked)
+   {
+      elementos = elementos + 1;      
+   }else{
+		elementos = elementos - 1;
+		lCamaras = divFavoritas.getElementsByClassName('camaraContenedor');
+		for (n = 0; n < MAX_FAV; n++)
+		{
+			if (cb.name === lCamaras[n].id) 
+			{
+				favorita = "favorita"+n;
+				localStorage.removeItem(favorita);
+			}
+		}
+   }
+   //alert(elementos);
+   if (elementos <= MAX_FAV)
+   {
+      if(cb.checked) 
+      {   
+        for (n=0; n < MAX_FAV; n++)
+		{
+			favorita="favorita"+n;
+			if (localStorage.getItem(favorita) === null) 
+			{
+				localStorage.setItem(favorita, returnCamera(cb.name, true));
+				break;
+			}
+		}
+      }
+      //alert ('Modificamos ' + cb.name + 'con:' + cb.checked);
+   }else{
+      alert('Solo se pueden configurar 4 camaras como favoritas. Desmarca alguna');
+      elementos = elementos - 1;
+      cb.checked = false;
+   }
+   if (cb.checked)
+   {
+      elementos = 0;
+      loadwebcamdata();
+   }
+
+}
+function permanente(cb) { 
+   var cheksPermanent;
+   localStorage.setItem('webCamPermanent', returnCamera(cb.name, false));
+   cheksPermanent=document.getElementsByTagName('input'); 
+        for(i=0;i<cheksPermanent.length;i++)
+        {
+            if(cheksPermanent[i].type == "radio") cheksPermanent[i].checked = false;
+        }
+   cb.checked = true;
+}
+function returnButtons(name)
+{
+   var buttonsToWrite = "<div class='buttonContenedor'>";
+   var linkTripTxt = tripLink[name];
+   if (linkTripTxt == null)
+	{
+		linkTripTxt = 'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/'
+	}
+	buttonsToWrite = buttonsToWrite + " <a href="+ linkTripTxt+ " target = '_blank'> <img src= 'http://www.oceanpawpaw.com/triplogo.png'></img></a>";
+   buttonsToWrite = buttonsToWrite + " <br><label><input type='checkbox' name='"+ name +"'"; 
+   buttonsToWrite = buttonsToWrite + " onclick='handleClick(this);'>Favorita</label>";
+   buttonsToWrite = buttonsToWrite + " <label><input type='radio' name='" + name +"' value='permanente' onclick='permanente(this);'>Permanente</label></div>";
+   return buttonsToWrite;
+}
+
+function ChangeCams(name){
+  switch (name)
+  {
+	case 'mojacar':
+		document.getElementById('mojacar').src="http://www.continental-mojacar.es/img/webcam/imagen.jpg?180";
+		break;
+	case 'roquetas':
+		document.getElementById('roquetas').src="http://www.roquetas-de-mar.es/upload/video.jpg";
+		break;
+	case 'losLances':
+		document.getElementById('losLances').src="http://www.beyyy.com/webcam/webcam.jpg";
+		break;
+    case 'pals':
+        document.getElementById('pals').src="http://www.webcampals.net/images/channel_1.jpg?r=1390510838116";
+        break;   
+    case 'barceloneta':
+      document.getElementById('barceloneta').src="http://www.buscandomar.com/personal/webcams/cam3/image/snapshot.jpg?1389970864550";
+        break;
+	case 'bogatell':
+	  document.getElementById('bogatell').src="http://www.buscandomar.com/personal/webcams/cam1/image/snapshot.jpg";
+        break;
+    case 'pozo':
+      document.getElementById('pozo').src="http://camaras.konducta.com:8081/cam_1.jpg";
+      break;
+    case 'tamariu':
+      document.getElementById('tamariu').src="http://www.hotelhostalillo.com/webcam/hostalillo-tamariu.jpg";
+      break;
+    case 'tyson':
+      document.getElementById('tyson').src="http://lasantasurfsitges.es/webcam/cam-bcn000M.jpg";
+      break;
+    case 'sitges':
+      document.getElementById('sitges').src="http://www.lasantasurfsitges.es/webcam/web-000M.jpg";
+      break;
+    case 'ampuria':
+        document.getElementById('ampuria').src="http://www.ampuriabrava.com/webcam/123456.jpg";
+        break;
+    case 'aquarius':
+        document.getElementById('aquarius').src="http://aquarius.crossmedia-management.com/html/meteo/fullsize.jpg";
+        break;
+    case 'masPalomas':
+        document.getElementById('maspalomas').src="http://www.playademaspalomas.com/meteo/playa.jpg?1400178628";
+        break;
+    case 'teguise':
+        document.getElementById('teguise').src="http://www.beachbar-lanzarote.com/cam1.jpg?1400178723477";
+        break;
+    case 'medano':
+        document.getElementById('medano').src="http://www.cabezo-medano.com/files/rudimobotix.jpg";
+        break;
+    case 'formentera':
+        document.getElementById('formentera').src="http://www.bluebarformentera.com/webcam/sunset.jpg";
+        break;
+    case 'alcudia':
+        document.getElementById('alcudia').src="http://www.playaesperanza.net/alcudia/axis.jpg";
+        break;
+    case 'canPastilla':
+        document.getElementById('canPastilla').src="http://www.helios-hotels.com/playa_hel.jpg";
+        break;
+    case 'santaPonsa':
+        document.getElementById('santaPonsa').src="http://santa-ponsa.cwsurf.de/cam.jpg";
+        break;
+    case 'calaTarida':
+        document.getElementById('calaTarida').src="http://213.96.90.110:8080/axis-cgi/jpg/image.cgi?resolution=640x480";
+        break;
+    case 'cangas':
+        document.getElementById('cangas').src="http://213.96.90.110:8080/axis-cgi/jpg/image.cgi?resolution=640x480";
+        break;
+    case 'baiona':
+        document.getElementById('baiona').src="http://85.91.64.26/baiona/readImage.asp?dummy=1401546064073";
+        break;
+    case 'ares':
+        document.getElementById('ares').src="http://concellodeares.com/~wcam/Ultima_Imaxe.jpg";
+        break;
+    case 'doniños':
+        document.getElementById('doniños').src="http://154.56.152.17:3000/jpg/image.jpg?1401548161447";  
+        break;
+    case 'xilxes':
+        document.getElementById('xilxes').src="http://turiscam.gva.es/webcams/xilxes.jpg";
+		break;
+    case 'guardamar':
+        document.getElementById('guardamar').src="http://turiscam.gva.es/webcams/guardamar.jpg";
+        break;
+    case 'santaPola':
+        document.getElementById('santaPola').src="http://turiscam.gva.es/webcams/santapolaw.jpg";
+        break;
+    case 'denia':
+        document.getElementById('denia').src="http://turiscam.gva.es/webcams/deniaw.jpg";
+        break;
+    case 'piles':
+        document.getElementById('piles').src="http://turiscam.gva.es/webcams/piles.jpg";
+        break;
+    case 'sanJuan':
+        document.getElementById('sanJuan').src="http://turiscam.gva.es/webcams/sanjuan.jpg";
+        break;
+    case 'cullera':
+        document.getElementById('cullera').src="http://turiscam.gva.es/webcams/cullera.jpg";
+        break;
+    case 'peniscola':
+        document.getElementById('cullera').src="http://turiscam.gva.es/webcams/penyiscola.jpg";
+        break;  
+	case 'sagunto':
+		document.getElementById('sagunto').src='http://turiscam.gva.es/webcams/sagunt.jpg';
+		break;
+	case 'benicassim':
+		document.getElementById('benicassim').src='http://turiscam.gva.es/webcams/benicassim.jpg';
+		break;	
+  case 'mundaka':
+    document.getElementById('mundaka').src='http://150.241.234.31/kostasystem/irudiak/mundaka/camara1_snap.jpeg';
+    break;
+  case 'zarautzPlaya':
+    document.getElementById('zarautzPlaya').src='http://150.241.234.31/kostasystem/irudiak/zarautz/camara1_snap.jpeg';
+    break;
+    }  
+} 
+function ChangeMedia()
+{
+  var i = 0;
+  for (camara in camaras)
+  {
+    if (document.getElementById(camara) != null)
+	{
+      ChangeCams(camara);
+    }
+  }
+}
+
+var reloadcam = setInterval("ChangeMedia()",10000);
+</script>

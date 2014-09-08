@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html lang="es-ES">
+
+<head>
+<meta charset="utf-8">
+<link rel='stylesheet' type='text/css'  href='webcame.css'/>
+<style type="text/css">
+  .tittlebtn:hover {
+  transform: scale(0.01);
+  -webkit-transform: scale(0.01);
+}
+  
+</style>
+<meta name ='viewport' content="width=device-width, initial-scale=1.0" />
+<title>WebCams &raquo; Surf, Windsurf en Portugal</title>
+</head>
+<body>
+<script type="text/javascript"> 
+
+window.onload = loadPage;
+var MAX_FAV = 20;
+var elementos = 0;
+var favoritas = [MAX_FAV];
+var favname=[MAX_FAV];
+var headerCam;
+var zonaCamaras;
+var h2Baleares;
+var h2Andalucia;
+var h2Catalunya;
+var h2Canarias;
+var h2Galicia;
+var h2Valencia;
+var h2Euskadi;
+var h2Asturias;
+var h2Cantabria;
+var h2Murcia;
+
+function loadPage()
+{
+	headerCam= document.getElementById('HeaderCam');
+	zonaCamaras = document.getElementById('zonaCamaras');
+	h2Andalucia = document.getElementById('Andalucia');
+	h2Andalucia.addEventListener("click", cargaAndalucia);
+	loadwebcamdata();
+}
+function calcHeight()
+{
+//find the height of the internal page
+         var the_height=document.getElementById('the_iframe').contentWindow.
+         document.body.scrollHeight;
+//change the height of the iframe
+         document.getElementById('the_iframe').height=the_height;
+}
+function loadwebcamdata()
+{
+  elementos = MAX_FAV;
+  var numCam = 0;
+  var nomCam = "";
+  do{
+    nomCam = 'favorita' + numCam.toString();
+    favoritas[numCam] = localStorage.getItem(nomCam)
+    numCam ++;
+  }while (numCam < MAX_FAV)
+
+  for (n=0;n<MAX_FAV;n++)
+  {
+    if (favoritas[n] == null) 
+      {
+        favoritas[n] = "";
+        elementos = elementos -1;
+      }
+  }
+
+  cargarFavoritas();
+}
+function checkChecks()
+{
+  var divFavoritas=document.getElementById('favoritas');
+	var checkboxes=document.getElementsByTagName('input'); 
+	var lCamaras = divFavoritas.getElementsByClassName('camaraContenedor');
+  var countCam = 0;
+  var check = false;
+    for(i=0;i<checkboxes.length;i++)
+    {
+        if(checkboxes[i].type == "checkbox")
+        {      
+            check = false;
+            countCam = 0;
+            do{
+              if (checkboxes[i].name === lCamaras[countCam].id){
+                check = true;
+                break;  
+              } 
+              countCam++;
+            }while (countCam < lCamaras.length);      
+            checkboxes[i].checked = check;
+        }
+    }
+}
+function cargarFavoritas()
+{
+	var divFavoritas=document.getElementById('favoritas')
+	var htmlFavoritas="";
+
+  for (var countCam = 0; countCam < MAX_FAV; countCam++){
+    htmlFavoritas += favoritas[countCam];
+  }
+	if (htmlFavoritas == "")
+	{
+		htmlFavoritas = "<h1 id='tittle'>ZONA FAVORITAS. </h1><br><h2> Escoge las Webcams de tus spots para surf, windsurf, SUP, Kite favoritos y se mostraran en este apartado cada vez que visites la pagina. <br> Nos vemos en el Agua!</h2>";
+	}
+	divFavoritas.innerHTML = htmlFavoritas;
+	checkChecks();
+}
+</script>
+	
+<div id="favoritas" class ="favoritas">
+</div>
+<div id="countries">
+	<a href="./webcams_surf_windsurf_espanya.html#countries" class="btnCountries" >Spain</a>
+	<a class="btnCountries, ctrSelected" >Portugal</a>
+</div>
+<div class='contenedor'>
+  <a href="#HeaderCam"><h2 id='Andalucia' class='tittlebtn'>Estamos en Ello :-p</h2></a>
+  
+</div>
+<div id="titCamaras"><h2 id="HeaderCam" class="tittle"></h2></div>
+<div id="zonaCamaras">
+</div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- OceanBlog300x250 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-7656070818995137"
+     data-ad-slot="6011579401"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
+
+<script type="text/javascript" async> 
+var camaras = {};
+var tripLink = {};
+
+function returnCamera(name, buttons)
+{
+	if (name)
+	{
+		var camera2Write='<div class="camaraContenedor" id="'+name+'"> ';
+		camera2Write += camaras[name];
+		if (buttons)
+		{
+			camera2Write = camera2Write + returnButtons(name);
+		}
+		camera2Write += '</div>' ;
+		return camera2Write;
+	}
+	return "";
+}
+
+
+
+function cargaAndalucia()
+{
+/*camaras = {
+'mojacar':'Mojacar <br> by <a href="http://www.continental-mojacar.es/es/index.php?mod=webcam" target="_blank">Continental-Mojacar</a></br><img width="300" height="261px" src="http://www.continental-mojacar.es/img/webcam/imagen.jpg?180" id="mojacar"></img>',
+'roquetas':'Roquetas <br> by <a href="http://www.roquetas-de-mar.es/uk/webcam.asp" target="_blank">Roquetas de Mar</a></br><img width="300" height="261px" src="http://www.roquetas-de-mar.es/upload/video.jpg" id="roquetas"></img>',
+'losLances':'Los Lances Tarifa<br> by <a href="http://www.beyyy.com/webcam-los-lances-tarifa/#" target="_blank">www.beyyy.com</a></br><img width="300" height="261px" src="http://www.beyyy.com/webcam/webcam.jpg" id="losLances"></img>',
+'valdevaqueros':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/valdevaqueros-tangana/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>", 
+'arteVida':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/arte-vida/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>",
+'canosMeca':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/los-canos-de-meca/b/A45064668F961AB4AB17' frameborder='5' scrolling='no' width='300px' height='300px'></iframe>",
+'puntaUmbria':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/punta-umbria/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'almerimar':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/club-de-playa-almerimar/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'rochePoint':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/roche-point/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'balneario':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/balneario/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
+'valdevaquerosMistral':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/valdevaqueros-club-mistral/b/A45064668F961AB4AB17' frameborder='50'scrolling='no' width='300px' height='300px'></iframe>"
+}
+tripLink = {'mojacar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580270-Mojacar_Province_of_Almeria_Andalucia-Vacations.html',
+'roquetas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644309-Roquetas_de_Mar_Province_of_Almeria_Andalucia-Vacations.html',
+'losLances':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Attraction_Review-g315918-d1065750-Reviews-Los_Lances_Beach-Tarifa_Costa_de_la_Luz_Andalucia.html',
+'valdevaqueros':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'arteVida':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'canosMeca':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g580273-Los_Canos_de_Meca_Costa_de_la_Luz_Andalucia-Vacations.html',
+'puntaUmbria':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g947008-Punta_Umbria_Province_of_Huelva_Andalucia-Vacations.html',
+'almerimar':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g658698-Almerimar_Province_of_Almeria_Andalucia-Vacations.html',
+'rochePoint':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g652101-Conil_de_la_Frontera_Costa_de_la_Luz_Andalucia-Vacations.html',
+'balneario':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html',
+'valdevaquerosMistral':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g315918-Tarifa_Costa_de_la_Luz_Andalucia-Vacations.html'
+}
+  var txtHTML = '';  
+  txtHTML += returnCamera('mojacar', true);
+  txtHTML += returnCamera('roquetas', true);
+  txtHTML += returnCamera('losLances', true);
+  txtHTML += returnCamera('valdevaqueros', true);
+  txtHTML += returnCamera('arteVida', true);
+  txtHTML += returnCamera('canosMeca', true);
+  txtHTML += returnCamera('puntaUmbria', true);
+  txtHTML += returnCamera('almerimar', true);
+  txtHTML += returnCamera('rochePoint', true);
+  txtHTML += returnCamera('balneario', true);
+  txtHTML += returnCamera('valdevaquerosMistral', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Andalucia";
+  checkChecks();*/
+}
+
+
+
+
+function handleClick(cb) { 
+	var favorita = "";
+	var divFavoritas=document.getElementById('favoritas')
+	var lCamaras;
+   if (cb.checked)
+   {
+      elementos = elementos + 1;      
+   }else{
+		elementos = elementos - 1;
+		lCamaras = divFavoritas.getElementsByClassName('camaraContenedor');
+		for (n = 0; n < MAX_FAV; n++)
+		{
+			if (cb.name === lCamaras[n].id) 
+			{
+				favorita = "favorita"+n;
+				localStorage.removeItem(favorita);
+			}
+		}
+   }
+   //alert(elementos);
+   if (elementos <= MAX_FAV)
+   {
+      if(cb.checked) 
+      {   
+        for (n=0; n < MAX_FAV; n++)
+		{
+			favorita="favorita"+n;
+			if (localStorage.getItem(favorita) === null) 
+			{
+				localStorage.setItem(favorita, returnCamera(cb.name, true));
+				break;
+			}
+		}
+      }
+      //alert ('Modificamos ' + cb.name + 'con:' + cb.checked);
+   }else{
+      alert('Solo se pueden configurar 20 camaras como favoritas. Desmarca alguna');
+      elementos = elementos - 1;
+      cb.checked = false;
+   }
+   if (cb.checked)
+   {
+      elementos = 0;
+      loadwebcamdata();
+   }
+
+}
+function permanente(cb) { 
+   var cheksPermanent;
+   localStorage.setItem('webCamPermanent', returnCamera(cb.name, false));
+   cheksPermanent=document.getElementsByTagName('input'); 
+        for(i=0;i<cheksPermanent.length;i++)
+        {
+            if(cheksPermanent[i].type == "radio") cheksPermanent[i].checked = false;
+        }
+   cb.checked = true;
+}
+function returnButtons(name)
+{
+   var buttonsToWrite = "<div class='buttonContenedor'>";
+   var linkTripTxt = tripLink[name];
+   if (linkTripTxt == null)
+	{
+		linkTripTxt = 'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/'
+	}
+	buttonsToWrite = buttonsToWrite + " <a href="+ linkTripTxt+ " target = '_blank'> <img src= 'http://www.oceanpawpaw.com/triplogo.png'></img></a>";
+   buttonsToWrite = buttonsToWrite + " <br><label><input type='checkbox' name='"+ name +"'"; 
+   buttonsToWrite = buttonsToWrite + " onclick='handleClick(this);'>Favorita</label>";
+   buttonsToWrite = buttonsToWrite + " <label><input type='radio' name='" + name +"' value='permanente' onclick='permanente(this);'>Permanente</label></div>";
+   return buttonsToWrite;
+}
+
+function ChangeCams(name){
+  switch (name)
+  {
+	case 'mojacar':
+		document.getElementById('mojacar').src="http://www.continental-mojacar.es/img/webcam/imagen.jpg?180";
+		break;
+	case 'roquetas':
+		document.getElementById('roquetas').src="http://www.roquetas-de-mar.es/upload/video.jpg";
+		break;
+	case 'losLances':
+		document.getElementById('losLances').src="http://www.beyyy.com/webcam/webcam.jpg";
+		break;
+    case 'pals':
+        document.getElementById('pals').src="http://www.webcampals.net/images/channel_1.jpg?r=1390510838116";
+        break;   
+    case 'barceloneta':
+      document.getElementById('barceloneta').src="http://www.buscandomar.com/personal/webcams/cam3/image/snapshot.jpg?1389970864550";
+        break;
+	case 'bogatell':
+	  document.getElementById('bogatell').src="http://www.buscandomar.com/personal/webcams/cam1/image/snapshot.jpg";
+        break;
+    case 'pozo':
+      document.getElementById('pozo').src="http://camaras.konducta.com:8081/cam_1.jpg";
+      break;
+    case 'tamariu':
+      document.getElementById('tamariu').src="http://www.hotelhostalillo.com/webcam/hostalillo-tamariu.jpg";
+      break;
+    case 'tyson':
+      document.getElementById('tyson').src="http://lasantasurfsitges.es/webcam/cam-bcn000M.jpg";
+      break;
+    case 'sitges':
+      document.getElementById('sitges').src="http://www.lasantasurfsitges.es/webcam/web-000M.jpg";
+      break;
+    case 'ampuria':
+        document.getElementById('ampuria').src="http://www.ampuriabrava.com/webcam/123456.jpg";
+        break;
+    case 'aquarius':
+        document.getElementById('aquarius').src="http://aquarius.crossmedia-management.com/html/meteo/fullsize.jpg";
+        break;
+    case 'masPalomas':
+        document.getElementById('maspalomas').src="http://www.playademaspalomas.com/meteo/playa.jpg?1400178628";
+        break;
+    case 'teguise':
+        document.getElementById('teguise').src="http://www.beachbar-lanzarote.com/cam1.jpg?1400178723477";
+        break;
+    case 'medano':
+        document.getElementById('medano').src="http://www.cabezo-medano.com/files/rudimobotix.jpg";
+        break;
+    case 'formentera':
+        document.getElementById('formentera').src="http://www.bluebarformentera.com/webcam/sunset.jpg";
+        break;
+    case 'alcudia':
+        document.getElementById('alcudia').src="http://www.playaesperanza.net/alcudia/axis.jpg";
+        break;
+    case 'canPastilla':
+        document.getElementById('canPastilla').src="http://www.helios-hotels.com/playa_hel.jpg";
+        break;
+    case 'santaPonsa':
+        document.getElementById('santaPonsa').src="http://santa-ponsa.cwsurf.de/cam.jpg";
+        break;
+    case 'calaTarida':
+        document.getElementById('calaTarida').src="http://213.96.90.110:8080/axis-cgi/jpg/image.cgi?resolution=640x480";
+        break;
+    case 'cangas':
+        document.getElementById('cangas').src="http://213.96.90.110:8080/axis-cgi/jpg/image.cgi?resolution=640x480";
+        break;
+    case 'baiona':
+        document.getElementById('baiona').src="http://85.91.64.26/baiona/readImage.asp?dummy=1401546064073";
+        break;
+    case 'ares':
+        document.getElementById('ares').src="http://concellodeares.com/~wcam/Ultima_Imaxe.jpg";
+        break;
+    case 'doniños':
+        document.getElementById('doniños').src="http://154.56.152.17:3000/jpg/image.jpg?1401548161447";  
+        break;
+    case 'xilxes':
+        document.getElementById('xilxes').src="http://turiscam.gva.es/webcams/xilxes.jpg";
+		break;
+    case 'guardamar':
+        document.getElementById('guardamar').src="http://turiscam.gva.es/webcams/guardamar.jpg";
+        break;
+    case 'santaPola':
+        document.getElementById('santaPola').src="http://turiscam.gva.es/webcams/santapolaw.jpg";
+        break;
+    case 'denia':
+        document.getElementById('denia').src="http://turiscam.gva.es/webcams/deniaw.jpg";
+        break;
+    case 'piles':
+        document.getElementById('piles').src="http://turiscam.gva.es/webcams/piles.jpg";
+        break;
+    case 'sanJuan':
+        document.getElementById('sanJuan').src="http://turiscam.gva.es/webcams/sanjuan.jpg";
+        break;
+    case 'cullera':
+        document.getElementById('cullera').src="http://turiscam.gva.es/webcams/cullera.jpg";
+        break;
+    case 'peniscola':
+        document.getElementById('cullera').src="http://turiscam.gva.es/webcams/penyiscola.jpg";
+        break;  
+	case 'sagunto':
+		document.getElementById('sagunto').src='http://turiscam.gva.es/webcams/sagunt.jpg';
+		break;
+	case 'benicassim':
+		document.getElementById('benicassim').src='http://turiscam.gva.es/webcams/benicassim.jpg';
+		break;	
+  case 'mundaka':
+    document.getElementById('mundaka').src='http://150.241.234.31/kostasystem/irudiak/mundaka/camara1_snap.jpeg';
+    break;
+  case 'zarautzPlaya':
+    document.getElementById('zarautzPlaya').src='http://150.241.234.31/kostasystem/irudiak/zarautz/camara1_snap.jpeg';
+    break;
+    }  
+} 
+function ChangeMedia()
+{
+  var i = 0;
+  for (camara in camaras)
+  {
+    if (document.getElementById(camara) != null)
+	{
+      ChangeCams(camara);
+    }
+  }
+}
+
+var reloadcam = setInterval("ChangeMedia()",1000000);
+</script>
