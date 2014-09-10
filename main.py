@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #
 # Copyright 2007 Google Inc.
 #
@@ -14,20 +15,55 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from google.appengine.api import users
+import os
 import webapp2
+import jinja2
+import logging
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-    	user = users.get_current_user()
-
-    	if user:
-            self.response.headers['Content-Type'] = 'text/plain'
-            self.response.write('Hello, ' + user.nickname())
+    	lang = ""
+        country = "POR"
+        tempcountry = "webcams_surf_windsurf_espanya.html"
+    	lang = self.request.get("lang")
+        country = self.request.get("country")
+        if country == "ESP":
+            tempcountry = "webcams_surf_windsurf_espanya.html"
+        elif country == "POR":
+            tempcountry = "webcams_surf_windsurf_portugal.html"
+        #logging.info("value of my contry is %s", lang)
+    	if lang == "eng":
+    		template_values = {
+            	'textfav': "Configure your Favourite Cams! And they will appear in this section.",
+                'lang':lang,
+                'country':country,
+                'fav':"Favourite",
+                'perm':"Permanent",
+                'ESP': "Spain", 
+                'POR': "Portugal"
+        	}
         else:
-            self.redirect(users.create_login_url(self.request.uri))
-
+        	template_values = {
+            	'textfav': u"Configura tus camaras FAVORITAS para que aparezcan siempre en esta sección",
+                'lang':lang,
+                'country':country,
+                'fav':"Favorita",
+                'perm':"Permanente",
+                'ESP': u"España", 
+                'POR': "Portugal"
+        	}
+        
+        #self.response.out.write(tempcountry)
+        template = JINJA_ENVIRONMENT.get_template(tempcountry)
+        self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
-], debug=False)
+    ('/webcams', MainHandler),
+], debug=True)
