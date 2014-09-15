@@ -66,4 +66,4 @@ class MainHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/webcams', MainHandler),
-], debug=True)
+], debug=False)

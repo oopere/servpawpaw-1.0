@@ -559,16 +559,6 @@ function handleClick(cb) {
    }
 
 }
-function permanente(cb) { 
-   var cheksPermanent;
-   localStorage.setItem('webCamPermanent', returnCamera(cb.name, false));
-   cheksPermanent=document.getElementsByTagName('input'); 
-        for(i=0;i<cheksPermanent.length;i++)
-        {
-            if(cheksPermanent[i].type == "radio") cheksPermanent[i].checked = false;
-        }
-   cb.checked = true;
-}
 function returnButtons(name)
 {
    var buttonsToWrite = "<div class='buttonContenedor'>";
@@ -579,8 +569,7 @@ function returnButtons(name)
 	}
 	buttonsToWrite = buttonsToWrite + " <a href="+ linkTripTxt+ " target = '_blank'> <img src= 'http://www.oceanpawpaw.com/triplogo.png'></img></a>";
    buttonsToWrite = buttonsToWrite + " <br><label><input type='checkbox' name='"+ name +"'"; 
-   buttonsToWrite = buttonsToWrite + " onclick='handleClick(this);'>{{ fav }}</label>";
-   buttonsToWrite = buttonsToWrite + " <label><input type='radio' name='" + name +"' value='permanente' onclick='permanente(this);'>{{ perm }}</label></div>";
+   buttonsToWrite = buttonsToWrite + " onclick='handleClick(this);'>{{ fav }}</label></div>";
    return buttonsToWrite;
 }
 
