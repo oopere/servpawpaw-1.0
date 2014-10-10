@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <link rel='stylesheet' type='text/css'  href='webcame.css'/>
 <meta name ='viewport' content="width=device-width, initial-scale=1.0" />
-<title>WebCams &raquo; Surf, Windsurf en Portugal</title>
+<title>WebCams &raquo; Surf, Windsurf en Italia</title>
 </head>
 <body>
 <script type="text/javascript"> 
@@ -18,18 +18,20 @@ var favname=[MAX_FAV];
 var headerCam;
 var zonaCamaras;
 var h2Norte;
-var h2CentroNorte;
 var h2Centro;
-var h2CentroSud;
-var h2Sud;
+var h2Sur;
+var h2SiciCala;
+var h2Cerdenya
 
 
 function loadPage()
 {
 	headerCam= document.getElementById('HeaderCam');
 	zonaCamaras = document.getElementById('zonaCamaras');
-  h2Sud = document.getElementById('Sud');
-  h2Sud.addEventListener("click", cargaSud);
+  h2Norte = document.getElementById('Norte');
+  h2Norte.addEventListener("click", cargaNorte);
+  h2Sur = document.getElementById('Sur');
+  h2Sur.addEventListener("click", cargaSur);
   loadwebcamdata();
 }
 function calcHeight()
@@ -107,11 +109,12 @@ function cargarFavoritas()
 </div>
 <div id="countries">
 	<a href="./webcams?lang={{ lang }}&country=ESP#countries" class="btnCountries" >{{ ESP }}</a>
-	<a class="btnCountries, ctrSelected" >{{ POR }}</a>
-  <a href="./webcams?lang={{ lang }}&country=ITA#countries" class="btnCountries" >{{ ITA }}</a>
+  <a href="./webcams?lang={{ lang }}&country=POR#countries" class="btnCountries" >{{ POR }}</a>
+	<a class="btnCountries, ctrSelected" >{{ ITA }}</a>
 </div>
 <div class='contenedor'>
-  <a href="#HeaderCam"><h2 id='Sud' class='tittlebtn'>{{ SUD }}</h2></a>
+  <a href="#HeaderCam"><h2 id='Norte' class='tittlebtn'>{{ NORTE }}</h2></a>
+  <a href="#HeaderCam"><h2 id='Sur' class='tittlebtn'>{{ SUD }}</h2></a>
 </div>
 <div id="titCamaras"><h2 id="HeaderCam" class="tittle"></h2></div>
 <div id="zonaCamaras">
@@ -153,21 +156,45 @@ function returnCamera(name, buttons)
 function cargaNorte()
 {
 camaras = {
-'martinhalbeach':'MartinhalBeach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhalbeach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
-'roquetas':'Roquetas <br> by <a href="http://www.roquetas-de-mar.es/uk/webcam.asp" target="_blank">Roquetas de Mar</a></br><img width="300" height="261px" src="http://www.roquetas-de-mar.es/upload/video.jpg" id="roquetas"></img>'
+'sanremoeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_est.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/est.jpg" id="sanremoeste"></img>',
+'sanremosur':'San Remo <br> by <a href="http://www.sistel.it/webcam_sud.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/sud.jpg" id="sanremosur"></img>',
+'sanremooeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_ovest.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/ovest.jpg" id="sanremooeste"></img>',
+'rimini':'Rimini <br> by <a href="http://www.hotelleoni.it/Hotel_Leoni/Beachcam.html" target="_blank">Rimini</a></br><img width="300" height="261px" src="http://webcam.rimini.com/~webcam1/leoni.jpg" id="rimini"></img>',
+'riccione':'Riccione <br> by <a href="http://www.spiaggia61.it/webcam.htm" target="_blank">Riccione</a></br><img width="300" height="261px" src="http://www.spiaggia61.it/img/fotonew.jpg?4" id="riccione"></img>',
+'cesenatico':'Cesenatico <br> by <a href="http://www.bagnomilano.com/webcam.htm" target="_blank">Cesenatico</a></br><img width="300" height="261px" src="http://www.bagnomilano.com/cam.jpg" id="riccione"></img>',
+'lugo':'Cesenatico <br> by <a href="http://www.circolonauticocervia.it/webcam.php" target="_blank">Lugo</a></br><img width="300" height="261px" src="http://www.circolonauticocervia.it/webcam/webcam_home.jpg" id="lugo"></img>',
+'bogliasco':'Bogliasco <br> by <a href="http://www.prolocobogliasco.it/web/index.php" target="_blank">Bogliasco</a></br><img width="300" height="261px" src="http://www.prolocobogliasco.it/webcam/current.jpg" id="bogliasco"></img>',
+'rapallo':'Rapallo <br> by <a href="http://www.stefanome.it/rapa.html" target="_blank">Rapallo</a></br><img width="300" height="261px" src="http://www.stefanome.it/currentrap.jpg" id="rapallo"></img>',
+'varazze':'Varazze <br> by <a href="http://meteowebcam.leroi.it/" target="_blank">Varazze</a></br><img width="300" height="261px" src="http://meteowebcam.leroi.it/leroi.jpg" id="varazze"></img>'
 }
-tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinhos_Porto_District_Northern_Portugal-Vacations.html',
-'roquetas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644309-Roquetas_de_Mar_Province_of_Almeria_Andalucia-Vacations.html'
+tripLink = {'sanremoeste':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194900-Sanremo_Italian_Riviera_Liguria-Vacations.html]]',
+'sanremosur':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194900-Sanremo_Italian_Riviera_Liguria-Vacations.html]]',
+'sanremooeste':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194900-Sanremo_Italian_Riviera_Liguria-Vacations.html]]',
+'rimini':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g2481599-Province_of_Rimini_Emilia_Romagna-Vacations.html]]',
+'riccione':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194878-Riccione_Province_of_Rimini_Emilia_Romagna-Vacations.html]]',
+'cesenatico':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194732-Cesenatico_Province_of_Forli_Cesena_Emilia_Romagna-Vacations.html]]',
+'lugo':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g1056167-Lugo_Province_of_Ravenna_Emilia_Romagna-Vacations.html]]',
+'bogliasco':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g678225-Bogliasco_Italian_Riviera_Liguria-Vacations.html]]',
+'rapallo':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g187826-Rapallo_Italian_Riviera_Liguria-Vacations.html]]',
+'varazze':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194941-Varazze_Italian_Riviera_Liguria-Vacations.html]]'
 }
   var txtHTML = '';  
-  txtHTML += returnCamera('martinhalbeach', true);
-  txtHTML += returnCamera('praiadaluz', true);
+  txtHTML += returnCamera('sanremoeste', true);
+  txtHTML += returnCamera('sanremosur', true);
+  txtHTML += returnCamera('sanremooeste', true);
+  txtHTML += returnCamera('rimini', true);
+  txtHTML += returnCamera('riccione', true);
+  txtHTML += returnCamera('cesenatico', true);
+  txtHTML += returnCamera('lugo', true);
+  txtHTML += returnCamera('bogliasco', true);
+  txtHTML += returnCamera('rapallo', true);
+  txtHTML += returnCamera('varazze', true);
   zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "Sud";
+  headerCam.innerHTML = "{{ NORTE }}";
   checkChecks();
 }
 
-function cargaCentroNorte()
+function cargaCentro()
 {
 camaras = {
 'martinhalbeach':'MartinhalBeach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhalbeach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
@@ -180,11 +207,37 @@ tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinh
   txtHTML += returnCamera('martinhalbeach', true);
   txtHTML += returnCamera('praiadaluz', true);
   zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "Sud";
+  headerCam.innerHTML = "Sur";
   checkChecks();
 }
 
-function cargaCentro()
+function cargaSur()
+{
+camaras = {
+'praiaamare':'Praia a Mare <br> by <a href="http://www.lidodarsena.it/cam.html" target="_blank">Praia a Mare</a></br><img width="300" height="261px" src="http://www.lidodarsena.it/webcam/webcam2/svga.jpg" id="praiaamare"></img>',
+'diamante':'Diamante  <br> by <a href="http://www.webcam-4insiders.com/es/tiempo-Diamante/3748-Diamante-tiempo.php" target="_blank">Diamante</a></br><img width="300" height="261px" src="http://www.webcam-4insiders.com/es/pictures/original/4-3748-2013-0724/tiempo-Webcam-Diamante--3748_1374675784.jpg" id="diamante"></img>',
+'ischia':'Ischia  <br> by <a href="http://www.ischiaonline.it/page.php?pag=WSOLEM&sez=WEBCAM" target="_blank">Ischia</a></br><img width="300" height="261px" src="http://www.ischiaonline.it/cams/solemar/solemarlr.jpg" id="ischia"></img>',
+'positano':'Positano  <br> by <a href="http://www.campanialive.it/webcam.asp?localita=positano" target="_blank">Positano</a></br><img width="300" height="261px" src="http://www.campanialive.it/webcam/positano/positano.jpg" id="positano"></img>',
+'marinadicamerota':'Marina di Camerota  <br> by <a href="http://www.villaggio-macinelle.com/webcam-marina-di-camerota" target="_blank">Marina di Camerota</a></br><img width="300" height="261px" src="http://95.231.255.46/record/current.jpg" id="marinadicamerota"></img>'
+}
+tripLink = {'praiaamare':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194866-a_zanpid.29083026C680869725T-m22104-Praia_A_Mare_Province_of_Cosenza_Calabria-Vacations.html]]',
+'diamante':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g616170-a_zanpid.29083026C680869725T-m22104-Diamante_Province_of_Cosenza_Calabria-Vacations.html]]',
+'ischia':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g187784-a_zanpid.29083026C680869725T-m22104-Isola_d_Ischia_Province_of_Naples_Campania-Vacations.html]]',
+'positano':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194863-a_zanpid.29083026C680869725T-m22104-Positano_Amalfi_Coast_Campania-Vacations.html]]',
+'marinadicamerota':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g580219-a_zanpid.29083026C680869725T-m22104-Marina_di_Camerota_Province_of_Salerno_Campania-Vacations.html]]'
+}
+  var txtHTML = '';  
+  txtHTML += returnCamera('praiaamare', true);
+  txtHTML += returnCamera('diamante', true);
+  txtHTML += returnCamera('ischia', true);
+  txtHTML += returnCamera('positano', true);
+  txtHTML += returnCamera('marinadicamerota', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "Sur";
+  checkChecks();
+}
+
+function cargaSiciCala()
 {
 camaras = {
 'martinhalbeach':'MartinhalBeach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhalbeach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
@@ -197,28 +250,11 @@ tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinh
   txtHTML += returnCamera('martinhalbeach', true);
   txtHTML += returnCamera('roquetas', true);
   zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "Sud";
+  headerCam.innerHTML = "Sur";
   checkChecks();
 }
 
-function cargaCentroSud()
-{
-camaras = {
-'martinhalbeach':'MartinhalBeach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhalbeach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
-'roquetas':'Roquetas <br> by <a href="http://www.roquetas-de-mar.es/uk/webcam.asp" target="_blank">Roquetas de Mar</a></br><img width="300" height="261px" src="http://www.roquetas-de-mar.es/upload/video.jpg" id="roquetas"></img>'
-}
-tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinhos_Porto_District_Northern_Portugal-Vacations.html',
-'roquetas':'http://www.anrdoezrs.net/links/5715193/type/dlg/sid/camaras/http://www.tripadvisor.es/Tourism-g644309-Roquetas_de_Mar_Province_of_Almeria_Andalucia-Vacations.html'
-}
-  var txtHTML = '';  
-  txtHTML += returnCamera('martinhalbeach', true);
-  txtHTML += returnCamera('roquetas', true);
-  zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "Sud";
-  checkChecks();
-}
-
-function cargaSud()
+function cargaCerdenya()
 {
 camaras = {
 'martinhalbeach':'Martinhal Beach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhal Beach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
@@ -226,16 +262,16 @@ camaras = {
 'lagos':'Lagos <br> by <a href="http://www.vivendamiranda.com/uk/webcamvivendamiranda" target="_blank">Lagos</a></br><img width="300" height="261px" src="http://www.vivendamiranda.pt/webcam/webcam-lagos1.jpg" id="lagos"></img>'
 }
 tripLink = {
-'martinhalbeach':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g189121-Sagres_Faro_District_Algarve-Vacations.html]]',
-'praiadaluz':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html]]',
-'lagos':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html]]'
+'martinhalbeach':'http://www.tripadvisor.es/Tourism-g189121-Sagres_Faro_District_Algarve-Vacations.html',
+'praiadaluz':'http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html',
+'lagos':'http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html'
 }
   var txtHTML = '';  
   txtHTML += returnCamera('martinhalbeach', true);
   txtHTML += returnCamera('praiadaluz', true);
   txtHTML += returnCamera('lagos', true);
   zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "{{ SUD }}";
+  headerCam.innerHTML = "{{ Sur }}";
   checkChecks();
 }
 
@@ -305,7 +341,7 @@ function returnButtons(name)
 }
 
 function ChangeCams(name){
-   
+  
 } 
 function ChangeMedia()
 {

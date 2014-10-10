@@ -38,6 +38,8 @@ class MainHandler(webapp2.RequestHandler):
             tempcountry = "webcams_surf_windsurf_espanya.html"
         elif country == "POR":
             tempcountry = "webcams_surf_windsurf_portugal.html"
+        elif country == "ITA":
+            tempcountry = "webcams_surf_windsurf_italia.html"
         #logging.info("value of my contry is %s", lang)
     	if lang == "eng":
     		template_values = {
@@ -47,7 +49,10 @@ class MainHandler(webapp2.RequestHandler):
                 'fav':"Favourite",
                 'perm':"Permanent",
                 'ESP': "Spain", 
-                'POR': "Portugal"
+                'POR': "Portugal",
+                'SUD': "South",
+                'NORTE': 'North',
+                'ITA': "Italy"
         	}
         else:
         	template_values = {
@@ -57,7 +62,10 @@ class MainHandler(webapp2.RequestHandler):
                 'fav':"Favorita",
                 'perm':"Permanente",
                 'ESP': u"España", 
-                'POR': "Portugal"
+                'POR': "Portugal",
+                'SUD': 'Sur',
+                'NORTE': 'Norte',
+                'ITA': 'Italia'
         	}
         
         #self.response.out.write(tempcountry)
