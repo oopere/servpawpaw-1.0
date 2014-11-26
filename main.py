@@ -52,7 +52,10 @@ class MainHandler(webapp2.RequestHandler):
                 'POR': "Portugal",
                 'SUD': "South",
                 'NORTE': 'North',
-                'ITA': "Italy"
+                'ITA': "Italy",
+                'GARDA': "Garda",
+                'CERDENYA': "Sardinia", 
+                'langt': "en-EN"
         	}
         else:
         	template_values = {
@@ -65,7 +68,10 @@ class MainHandler(webapp2.RequestHandler):
                 'POR': "Portugal",
                 'SUD': 'Sur',
                 'NORTE': 'Norte',
-                'ITA': 'Italia'
+                'ITA': 'Italia',
+                'GARDA': "Garda",
+                'CERDENYA': u"Cerdeña",
+                'langt': "es-ES"
         	}
         
         #self.response.out.write(tempcountry)

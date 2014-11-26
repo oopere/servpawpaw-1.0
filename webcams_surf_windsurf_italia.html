@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es-ES">
+<html lang="{{ langt }}">
 
 <head>
 <meta charset="utf-8">
@@ -21,7 +21,8 @@ var h2Norte;
 var h2Centro;
 var h2Sur;
 var h2SiciCala;
-var h2Cerdenya
+var h2Cerdenya;
+var h2Garda;
 
 
 function loadPage()
@@ -32,6 +33,10 @@ function loadPage()
   h2Norte.addEventListener("click", cargaNorte);
   h2Sur = document.getElementById('Sur');
   h2Sur.addEventListener("click", cargaSur);
+  h2Garda = document.getElementById('Garda');
+  h2Garda.addEventListener("click", cargaGarda);
+  h2Cerdenya = document.getElementById('Cerdenya');
+  h2Cerdenya.addEventListener("click", cargaCerdenya);  
   loadwebcamdata();
 }
 function calcHeight()
@@ -115,6 +120,8 @@ function cargarFavoritas()
 <div class='contenedor'>
   <a href="#HeaderCam"><h2 id='Norte' class='tittlebtn'>{{ NORTE }}</h2></a>
   <a href="#HeaderCam"><h2 id='Sur' class='tittlebtn'>{{ SUD }}</h2></a>
+  <a href="#HeaderCam"><h2 id='Garda' class='tittlebtn'>{{ GARDA }}</h2></a>
+  <a href="#HeaderCam"><h2 id='Cerdenya' class='tittlebtn'>{{ CERDENYA }}</h2></a>
 </div>
 <div id="titCamaras"><h2 id="HeaderCam" class="tittle"></h2></div>
 <div id="zonaCamaras">
@@ -156,16 +163,16 @@ function returnCamera(name, buttons)
 function cargaNorte()
 {
 camaras = {
-'sanremoeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_est.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/est.jpg" id="sanremoeste"></img>',
-'sanremosur':'San Remo <br> by <a href="http://www.sistel.it/webcam_sud.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/sud.jpg" id="sanremosur"></img>',
-'sanremooeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_ovest.htm" target="_blank">San Remo</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/ovest.jpg" id="sanremooeste"></img>',
-'rimini':'Rimini <br> by <a href="http://www.hotelleoni.it/Hotel_Leoni/Beachcam.html" target="_blank">Rimini</a></br><img width="300" height="261px" src="http://webcam.rimini.com/~webcam1/leoni.jpg" id="rimini"></img>',
-'riccione':'Riccione <br> by <a href="http://www.spiaggia61.it/webcam.htm" target="_blank">Riccione</a></br><img width="300" height="261px" src="http://www.spiaggia61.it/img/fotonew.jpg?4" id="riccione"></img>',
-'cesenatico':'Cesenatico <br> by <a href="http://www.bagnomilano.com/webcam.htm" target="_blank">Cesenatico</a></br><img width="300" height="261px" src="http://www.bagnomilano.com/cam.jpg" id="riccione"></img>',
-'lugo':'Cesenatico <br> by <a href="http://www.circolonauticocervia.it/webcam.php" target="_blank">Lugo</a></br><img width="300" height="261px" src="http://www.circolonauticocervia.it/webcam/webcam_home.jpg" id="lugo"></img>',
-'bogliasco':'Bogliasco <br> by <a href="http://www.prolocobogliasco.it/web/index.php" target="_blank">Bogliasco</a></br><img width="300" height="261px" src="http://www.prolocobogliasco.it/webcam/current.jpg" id="bogliasco"></img>',
-'rapallo':'Rapallo <br> by <a href="http://www.stefanome.it/rapa.html" target="_blank">Rapallo</a></br><img width="300" height="261px" src="http://www.stefanome.it/currentrap.jpg" id="rapallo"></img>',
-'varazze':'Varazze <br> by <a href="http://meteowebcam.leroi.it/" target="_blank">Varazze</a></br><img width="300" height="261px" src="http://meteowebcam.leroi.it/leroi.jpg" id="varazze"></img>'
+'sanremoeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_est.htm" target="_blank">Sistel</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/est.jpg" id="sanremoeste"></img>',
+'sanremosur':'San Remo <br> by <a href="http://www.sistel.it/webcam_sud.htm" target="_blank">Sistel</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/sud.jpg" id="sanremosur"></img>',
+'sanremooeste':'San Remo <br> by <a href="http://www.sistel.it/webcam_ovest.htm" target="_blank">Sistel</a></br><img width="300" height="261px" src="http://portal.sistel.it/webcam/ovest.jpg" id="sanremooeste"></img>',
+'rimini':'Rimini <br> by <a href="http://www.hotelleoni.it/Hotel_Leoni/Beachcam.html" target="_blank">Hotel Leoni</a></br><img width="300" height="261px" src="http://webcam.rimini.com/~webcam1/leoni.jpg" id="rimini"></img>',
+'riccione':'Riccione <br> by <a href="http://www.spiaggia61.it/webcam.htm" target="_blank">Spiaggia 61</a></br><img width="300" height="261px" src="http://www.spiaggia61.it/img/fotonew.jpg?4" id="riccione"></img>',
+'cesenatico':'Cesenatico <br> by <a href="http://www.bagnomilano.com/webcam.htm" target="_blank">Bagno Milano</a></br><img width="300" height="261px" src="http://www.bagnomilano.com/cam.jpg" id="riccione"></img>',
+'lugo':'Cesenatico <br> by <a href="http://www.circolonauticocervia.it/webcam.php" target="_blank">Circolo Nautico Cervia</a></br><img width="300" height="261px" src="http://www.circolonauticocervia.it/webcam/webcam_home.jpg" id="lugo"></img>',
+'bogliasco':'Bogliasco <br> by <a href="http://www.prolocobogliasco.it/web/index.php" target="_blank">Pro Loco Bogliasco</a></br><img width="300" height="261px" src="http://www.prolocobogliasco.it/webcam/current.jpg" id="bogliasco"></img>',
+'rapallo':'Rapallo <br> by <a href="http://www.stefanome.it/rapa.html" target="_blank">Stefanome</a></br><img width="300" height="261px" src="http://www.stefanome.it/currentrap.jpg" id="rapallo"></img>',
+'varazze':'Varazze <br> by <a href="http://meteowebcam.leroi.it/" target="_blank">Meteowebcam</a></br><img width="300" height="261px" src="http://meteowebcam.leroi.it/leroi.jpg" id="varazze"></img>'
 }
 tripLink = {'sanremoeste':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194900-Sanremo_Italian_Riviera_Liguria-Vacations.html]]',
 'sanremosur':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g194900-Sanremo_Italian_Riviera_Liguria-Vacations.html]]',
@@ -214,11 +221,11 @@ tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinh
 function cargaSur()
 {
 camaras = {
-'praiaamare':'Praia a Mare <br> by <a href="http://www.lidodarsena.it/cam.html" target="_blank">Praia a Mare</a></br><img width="300" height="261px" src="http://www.lidodarsena.it/webcam/webcam2/svga.jpg" id="praiaamare"></img>',
-'diamante':'Diamante  <br> by <a href="http://www.webcam-4insiders.com/es/tiempo-Diamante/3748-Diamante-tiempo.php" target="_blank">Diamante</a></br><img width="300" height="261px" src="http://www.webcam-4insiders.com/es/pictures/original/4-3748-2013-0724/tiempo-Webcam-Diamante--3748_1374675784.jpg" id="diamante"></img>',
-'ischia':'Ischia  <br> by <a href="http://www.ischiaonline.it/page.php?pag=WSOLEM&sez=WEBCAM" target="_blank">Ischia</a></br><img width="300" height="261px" src="http://www.ischiaonline.it/cams/solemar/solemarlr.jpg" id="ischia"></img>',
-'positano':'Positano  <br> by <a href="http://www.campanialive.it/webcam.asp?localita=positano" target="_blank">Positano</a></br><img width="300" height="261px" src="http://www.campanialive.it/webcam/positano/positano.jpg" id="positano"></img>',
-'marinadicamerota':'Marina di Camerota  <br> by <a href="http://www.villaggio-macinelle.com/webcam-marina-di-camerota" target="_blank">Marina di Camerota</a></br><img width="300" height="261px" src="http://95.231.255.46/record/current.jpg" id="marinadicamerota"></img>'
+'praiaamare':'Praia a Mare <br> by <a href="http://www.lidodarsena.it/cam.html" target="_blank">Lido Darsena</a></br><img width="300" height="261px" src="http://www.lidodarsena.it/webcam/webcam2/svga.jpg" id="praiaamare"></img>',
+'diamante':'Diamante  <br> by <a href="http://www.webcam-4insiders.com/es/tiempo-Diamante/3748-Diamante-tiempo.php" target="_blank">webcam-4insiders</a></br><img width="300" height="261px" src="http://www.webcam-4insiders.com/es/pictures/original/4-3748-2013-0724/tiempo-Webcam-Diamante--3748_1374675784.jpg" id="diamante"></img>',
+'ischia':'Ischia  <br> by <a href="http://www.ischiaonline.it/page.php?pag=WSOLEM&sez=WEBCAM" target="_blank">Ischia Online</a></br><img width="300" height="261px" src="http://www.ischiaonline.it/cams/solemar/solemarlr.jpg" id="ischia"></img>',
+'positano':'Positano  <br> by <a href="http://www.campanialive.it/webcam.asp?localita=positano" target="_blank">Campania Live</a></br><img width="300" height="261px" src="http://www.campanialive.it/webcam/positano/positano.jpg" id="positano"></img>',
+'marinadicamerota':'Marina di Camerota  <br> by <a href="http://www.villaggio-macinelle.com/webcam-marina-di-camerota" target="_blank">Villaggio Macinelle</a></br><img width="300" height="261px" src="http://95.231.255.46/record/current.jpg" id="marinadicamerota"></img>'
 }
 tripLink = {'praiaamare':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194866-a_zanpid.29083026C680869725T-m22104-Praia_A_Mare_Province_of_Cosenza_Calabria-Vacations.html]]',
 'diamante':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g616170-a_zanpid.29083026C680869725T-m22104-Diamante_Province_of_Cosenza_Calabria-Vacations.html]]',
@@ -257,21 +264,108 @@ tripLink = {'martinhalbeach':'http://www.tripadvisor.es/Tourism-g652092-Matosinh
 function cargaCerdenya()
 {
 camaras = {
-'martinhalbeach':'Martinhal Beach <br> by <a href="http://www.portugal-webcams.com/webcams/webcam-sagres.html" target="_blank">Martinhal Beach</a></br><img width="300" height="261px" src="http://www.portugal-webcams.com/sagres2/martinhal-qxga.jpg" id="martinhalbeach"></img>',
-'praiadaluz':'Praia da Luz <br> by <a href="http://starvilla.com/" target="_blank">Praia da Luz</a></br><img width="300" height="261px" src="http://www.algarveluzbay.com//webcam/images/oceanvillas.jpg" id="praiadaluz"></img>',
-'lagos':'Lagos <br> by <a href="http://www.vivendamiranda.com/uk/webcamvivendamiranda" target="_blank">Lagos</a></br><img width="300" height="261px" src="http://www.vivendamiranda.pt/webcam/webcam-lagos1.jpg" id="lagos"></img>'
+'algherocalabona':'Alghero Calabona <br> by <a href="http://www.hotelcalabona.it/webcam-alghero-meteo.html" target="_blank">Hotel Calabona</a></br><img width="300" height="261px" src="http://www.hotelcalabona.it/webcam/alghero.jpg" id="algherocalabona"></img>',
+'algheroportoconte':'Alghero Porto Conte <br> by <a href="http://www.hotelportoconte.com/alghero_portoconte_webcam.asp?ver=en" target="_blank">Hotel Porto Conte</a></br><img width="300" height="261px" src="http://www.hotelportoconte.com/webcam/alghero_portoconte.jpg" id="algheroportoconte"></img>',
+'caladivolpe':'Cala di Volpe <br> by <a href="http://www.hotelcaladivolpeview.com/" target="_blank">Hotel Cala di Volpe</a></br><img width="300" height="261px" src="http://cam.hotelcaladivolpeview.com/hotel-cala-di-volpe-a-luxury-collection-hotel-costa-smeralda.jpg" id="caladivolpe"></img>',
+'lapelosa':'la Pelosa <br> by <a href="http://www.roccarujavip.com/asp/webcam.asp?id=5&l=0" target="_blank">RoccaRuja Vip</a></br><img width="300" height="261px" src="http://www.roccarujavip.com/images/webcam/newcam.jpg" id="lapelosa"></img>',
+'marinella':'Marinella <br> by <a href="http://www.marineledda.it/index.php?pag=webcam" target="_blank">Hotel Cala di Volpe</a></br><img width="300" height="261px" src="http://93.67.21.245/cgi-bin/viewer/video.jpg?streamid=1&quality=5" id="marinella"></img>',
+'lacinta':'La Cinta <br> by <a href="http://www.santeodoroturismo.it/pages/webcam_spiaggia_la_cinta" target="_blank">Santeodoro turismo</a></br><img width="300" height="261px" src="http://www.meteosystem.com/webcam/sardegna/santeodoro1/lacinta.jpg" id="lacinta"></img>',
+'codacavallo':'Coda Cavallo <br> by <a href="http://www.santeodoroturismo.it/pages/webcam_spiaggia_capo_coda_cavallo" target="_blank">Santeodoro turismo</a></br><img width="300" height="261px" src="http://www.meteosystem.com/webcam/sardegna/santeodoro3/capocodacavallo.jpg" id="codacavallo"></img>',
+'laperlosetta':'La Perlosetta <br> by <a href="http://www.lapelosetta.it/webcam-stintino.asp#!prettyPhoto" target="_blank">www.lapelosetta.it</a></br><img width="300" height="261px" src="http://www.lapelosetta.it/webcam/stintino.jpg" id="laperlosetta"></img>',
+'costaparadiso':'Costa Paradiso <br> by <a href="http://www.faureragani.it/webcam/indexita.html?lacruzitta" target="_blank">http://www.faureragani.it</a></br><img width="300" height="261px" src="http://www.faureragani.it/webcam/foto/lacruzitta.jpg" id="costaparadiso"></img>'
 }
 tripLink = {
-'martinhalbeach':'http://www.tripadvisor.es/Tourism-g189121-Sagres_Faro_District_Algarve-Vacations.html',
-'praiadaluz':'http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html',
-'lagos':'http://www.tripadvisor.es/Tourism-g189117-Lagos_Faro_District_Algarve-Vacations.html'
+'algherocalabona':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g187880-a_zanpid.29083026C680869725T-m22104-Alghero_Province_of_Sassari_Sardinia-Vacations.html]]',
+'algheroportoconte':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g1185014-a_zanpid.29083026C680869725T-m22104-Porto_Conte_Province_of_Sassari_Sardinia-Vacations.html]]',
+'caladivolpe':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g945747-a_zanpid.29083026C680869725T-m22104-Cala_di_Volpe_Province_of_Olbia_Tempio_Sardinia-Vacations.html]]',
+'lapelosa':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g608925-a_zanpid.29083026C680869725T-m22104-Stintino_Province_of_Sassari_Sardinia-Vacations.html]]',
+'marinella':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g4606703-a_zanpid.29083026C680869725T-m22104-Marinella_Golfo_Aranci_Province_of_Olbia_Tempio_Sardinia-Vacations.html]]',
+'lacinta':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g652016-a_zanpid.29083026C680869725T-m22104-San_Teodoro_Province_of_Olbia_Tempio_Sardinia-Vacations.html]]',
+'codacavallo':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g1092547-a_zanpid.29083026C680869725T-m22104-Capo_Coda_Cavallo_Province_of_Olbia_Tempio_Sardinia-Vacations.html]]',
+'laperlosetta':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g608925-a_zanpid.29083026C680869725T-m22104-Stintino_Province_of_Sassari_Sardinia-Vacations.html]]',
+'costaparadiso':'http://www.tripadvisor.es/Tourism-g635629-Costa_Paradiso_Trinita_d_Agultu_e_Vignola_Province_of_Olbia_Tempio_Sardinia-Vacations.html'
 }
   var txtHTML = '';  
-  txtHTML += returnCamera('martinhalbeach', true);
-  txtHTML += returnCamera('praiadaluz', true);
-  txtHTML += returnCamera('lagos', true);
+  txtHTML += returnCamera('algherocalabona', true);
+  txtHTML += returnCamera('algheroportoconte', true);
+  txtHTML += returnCamera('caladivolpe', true);
+  txtHTML += returnCamera('lapelosa', true);
+  txtHTML += returnCamera('marinella', true);
+  txtHTML += returnCamera('lacinta', true);
+  txtHTML += returnCamera('codacavallo', true);
+  txtHTML += returnCamera('laperlosetta', true);
+  txtHTML += returnCamera('costaparadiso', true);
   zonaCamaras.innerHTML = txtHTML;
-  headerCam.innerHTML = "{{ Sur }}";
+  headerCam.innerHTML = "{{ CERDENYA }}";
+  checkChecks();
+}
+
+function cargaGarda()
+{
+camaras = {
+'torbole':'Torbole <br> by <a href="http://www.hotelromatorbole.de/torbole-webcam_2734795.html" target="_blank">Hotel Roma Torbole</a></br><img width="300" height="261px" src="http://www.gardameteo.com/webcam/torbole.jpg" id="torbole"></img>',
+'torbolee':'Torbole <br> by <a href="http://www.meteogarda.it/torbole/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/torbole/torbole.jpg" id="torbolee"></img>',
+'limone':'Limone <br> by <a href="http://www.sunhotels.it/info/dove_siamo_|_webcam" target="_blank">Sun Hotels</a></br><img width="300" height="261px" src="http://webcam.sunhotels.it/webcam/limone_gardasee_hotelsplendid.jpg" id="limone"></img>',
+'malcesine':'Malcesine <br> by <a href="http://www.panoramamalcesine.com/DE/2/227/webcam.htm" target="_blank">Panotama Malcesine</a></br><img width="300" height="261px" src="http://webcam.g2k.it/default.aspx?webcam=malcesine&w=485&h=363" id="malcesine"></img>',
+'malcesinee':'Malcesine <br> by <a href="http://www.meteogarda.it/malcesine/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/malcesine/malcesine.jpg" id="malcesinee"></img>',
+'brenzone':'Brenzone <br> by <a href="http://www.meteogarda.it/brenzone/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/brenzone/brenzone.jpg" id="brenzone"></img>',
+'salo':'Salo <br> by <a href="http://www.hotelduomosalo.it/it/vedifin.php?w=360&h=290&c=webcam&m=ponto&lg=4&titolo=cartella/pagina-unoq.html&fin=1&area=popfin&ombra=txtHint" target="_blank">Hotel Duomo Salo</a></br><img width="300" height="261px" src="http://spazio.tpwebcam.com/clienti/hduomo/current.jpg" id="salo"></img>',
+'saloo':'Salo <br> by <a href="http://www.meteogarda.it/salo/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/salo/salo.jpg" id="saloo"></img>',
+'manerba':'Manerba <br> by <a href="http://www.campingsanbiagio.net/en/webcam.php" target="_blank">Camping San Biagio</a></br><img width="300" height="261px" src="http://www.campingsanbiagio.net/webcam/sanbiagio.jpg" id="manerba"></img>',
+'bardolino':'Bardolino <br> by <a href="http://www.hotelromatorbole.com/bardolino-meteo-webcam_3213311.html" target="_blank">Hotel Roma Torbole</a></br><img width="300" height="261px" src="http://www.meteosystem.com/webcam/bardolino/bardolino.jpg" id="bardolino"></img>',
+'bardolinoo':'Bardolino <br> by <a href="www.meteogarda.it/bardolino/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/bardolino/bardolino.jpg" id="bardolinoo"></img>',
+'moniga':'Moniga <br> by <a href="http://www.likam.it/index.php?option=com_content&view=article&id=4&Itemid=131&lang=it" target="_blank">Likam</a></br><img width="300" height="261px" src="http://www.likam.it/WEBCAM/moniga/moniga.jpg" id="moniga"></img>',
+'sirmione':'Sirmione <br> by <a href="http://www.meteogarda.it/sirmione/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/sirmione/sirmione.jpg" id="sirmione"></img>',
+'desenzano':'Desenzano <br> by <a href="http://www.meteogarda.it/desenzano/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/desenzano/desenzano.jpg" id="desenzano"></img>',
+'desenzanoo':'Desenzano <br> by <a href="http://www.meteogarda.it/desenzano2/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/desenzano2/desenzano.jpg" id="desenzano0"></img>',
+'rivagarda':'Riva del Garda <br> by <a href="http://www.meteogarda.it/rivadelgarda/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/rivadelgarda/rivadelgarda.jpg" id="rivagarda"></img>',
+'campione':'Campione <br> by <a href="http://www.meteogarda.it/campione/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/campione/campione.jpg" id="campione"></img>',
+'gargnano':'Gargnano <br> by <a href="http://www.meteogarda.it/gargnano/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/gargnano/gargnano.jpg" id="gargnano"></img>',
+'peschiera':'Peschiera <br> by <a href="http://www.meteogarda.it/peschieradelgarda/" target="_blank">Meteogarda</a></br><img width="300" height="261px" src="http://www.meteogarda.it/peschieradelgarda/peschieradelgarda.jpg" id="peschiera"></img>'
+}
+tripLink = {
+'torbole1':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'torbole2':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'limone':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'malcesine':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'malcesinee':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'brenzone':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'salo':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'saloo':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'manerba':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'bardolino':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'bardolinoo':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'moniga':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'sirmione':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'desenzano':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'desenzanoo':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'rivagarda':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'campione':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'gargnano':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]',
+'peschiera':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g194771-a_zanpid.29083026C680869725T-m22104-Garda_Province_of_Verona_Veneto-Vacations.html]]'
+}
+  var txtHTML = '';  
+  txtHTML += returnCamera('torbole', true);
+  txtHTML += returnCamera('torbolee', true);
+  txtHTML += returnCamera('limone', true);
+  txtHTML += returnCamera('malcesine', true);
+  txtHTML += returnCamera('malcesinee', true);
+  txtHTML += returnCamera('brenzone', true);
+  txtHTML += returnCamera('salo', true);
+  txtHTML += returnCamera('saloo', true);
+  txtHTML += returnCamera('manerba', true);
+  txtHTML += returnCamera('bardolino', true);
+  txtHTML += returnCamera('bardolinoo', true);
+  txtHTML += returnCamera('moniga', true);
+  txtHTML += returnCamera('sirmione', true);
+  txtHTML += returnCamera('desenzano', true);
+  txtHTML += returnCamera('desenzanoo', true);
+  txtHTML += returnCamera('rivagarda', true);
+  txtHTML += returnCamera('campione', true);
+  txtHTML += returnCamera('gargnano', true);
+  txtHTML += returnCamera('peschiera', true);
+  zonaCamaras.innerHTML = txtHTML;
+  headerCam.innerHTML = "{{ Garda }}";
   checkChecks();
 }
 
