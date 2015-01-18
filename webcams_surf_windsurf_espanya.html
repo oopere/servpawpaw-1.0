@@ -316,6 +316,7 @@ tripLink = {'llanes':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camar
 function cargaCatalunya()
 {
 camaras = {'marBella':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/platja-de-la-mar-bella/b/A45064668F961AB4AB17' height='300' width='300' frameborder='50' scrolling='no'></iframe>",
+'calella':'Calella <br> by <a href="http://www.calella.cat/la-ciutat/el-municipi" target="_blank">www.calella.cat</a></br><img width="300" height="261px" src="http://178.237.152.29/cgi-bin/faststream.jpg" id="calella"></img>',
 'bogatell':'Bogatell <br> by <a href="http://www.portolimpic.es/webcam.php?i=2" target="_blank">www.portolimpic.es</a></br><img width="300" height="261px" src="http://www.buscandomar.com/personal/webcams/cam1/image/snapshot.jpg" id="bogatell"></img>',
 'castelldefelsKite':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/castelldefels-zona-kitesurf/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
 'pals':'Platja de Pals <br> by <a href="http://www.webcampals.net" target="_blank">www.webcampals.net</a></br><img width="300" height="261px" src="http://www.webcampals.net/images/channel_1.jpg?r=1390510838116" id="pals"></img>',
@@ -331,6 +332,7 @@ camaras = {'marBella':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/
 
 tripLink = {'cabrera':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g1063983-Cabrera_de_Mar_Catalonia-Vacations.html]]',
 'marBella':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Attraction_Review-g187497-d3467712-Reviews-Nova_Mar_Bella_beach-Barcelona_Catalonia.html]]',
+'calella':'http://ad.zanox.com/ppc/?29083026C680869725T&ULP=[[http://www.tripadvisor.es/Tourism-g580327-a_zanpid.29083026C680869725T-m22104-Calella_Catalonia-Vacations.html]]',
 'bogatell':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Attraction_Review-g187497-d4469233-Reviews-Port_Olimpic-Barcelona_Catalonia.html]]',
 'castelldefelsKite':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g652129-Castelldefels_Catalonia-Vacations.html]]',
 'pals': 'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Tourism-g580332-Pals_Costa_Brava_Province_of_Girona_Catalonia-Vacations.html]]',
@@ -344,6 +346,7 @@ tripLink = {'cabrera':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[cama
 'aquarius':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Hotel_Review-g1071417-d4051197-Reviews-Camping_Aquarius-Sant_Pere_Pescador_Costa_Brava_Province_of_Girona_Catalonia.html]]'
 }
   var txtHTML = '';
+  txtHTML += returnCamera('calella', true);
   txtHTML += returnCamera('barceloneta', true);
   txtHTML += returnCamera('bogatell', true);
   txtHTML += returnCamera('sitges', true);   
@@ -367,7 +370,7 @@ function cargaCanarias()
 'corralejo':"<iframe src='http://www.spotfav.com/widget/spot-snapshot/corralejo/b/A45064668F961AB4AB17' frameborder='50' scrolling='no' width='300px' height='300px'></iframe>",
 'maspalomas': 'Mas Palomas <br> by  <a href="http://www.playademaspalomas.com/es/webcamplaya.php" target = "_blank">MasPalomas.com</a></span></br><img height="261px" width="300px" src= "http://www.playademaspalomas.com/meteo/playa.jpg?1400178628" id="maspalomas"></img>',
 'teguise':'Costa Teguise <br> by  <a href="http://www.beachbar-lanzarote.com/de/webcam.php" target = "_blank">Beach Bar Lanzarote</a></span></br><img height="261px" width="300px" src= "http://www.beachbar-lanzarote.com/cam1.jpg?1400178723477" id="teguise"></img>',
-'pozo':'Pozo Izquierdo <br> by <a href="http://www.pozowinds.com/webcam-pozo-izquierdo/" target="_blank">www.pozowinds.com</a></br><iframe src="http://camaras.konducta.com:8081/cam_1.jpg?uniq=0.3106784517776655" frameborder="0" scrolling="no" width="300px" height="261px" id="pozo"></iframe>',
+'pozo':'Pozo Izquierdo <br> by <a href="http://www.pozowinds.com/webcam-pozo-izquierdo/" target="_blank">www.pozowinds.com</a></br><iframe src="http://camaras.pozowinds.com:8081/cam_1.jpg" frameborder="0" scrolling="no" width="300px" height="261px" id="pozo"></iframe>',
 'medano':'Medano <br> by  <a href="http://www.cabezo-medano.com/Foto_Webcam.html" target = "_blank">Apartamentos Medano</a></br><img height="261px" width="300px" height="261px" src= "http://www.cabezo-medano.com/files/rudimobotix.jpg" id="medano"></img>'
 }
   tripLink = {'famara':'http://ad.zanox.com/ppc/?29016635C1912933367&zpar0=[[camaras]]&ulp=[[http://www.tripadvisor.es/Attraction_Review-g187477-d568374-Reviews-Famara_Beach-Lanzarote_Canary_Islands.html]]',
